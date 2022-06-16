@@ -1,0 +1,1612 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FC7AC56F-2776-4A7E-BC80-D32ACB72067C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ServiceDesk.WebApp</RootNamespace>
+    <AssemblyName>ServiceDesk.WebApp</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44369</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AspNetDependencyInjection, Version=4.0.7233.38877, Culture=neutral, PublicKeyToken=f30c056d3cb8b991, processorArchitecture=MSIL">
+      <HintPath>..\packages\Jehoel.AspNetDependencyInjection.4.0.0\lib\net472\AspNetDependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=5.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.5.0.1\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=5.0.5.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.5.0.5\lib\netstandard2.0\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.6.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.4.6.0\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Channels, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Channels.4.7.0\lib\netstandard2.0\System.Threading.Channels.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.bootstrap">
+      <HintPath>..\packages\AspNet.ScriptManager.bootstrap.3.4.1\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery">
+      <HintPath>..\packages\AspNet.ScriptManager.jQuery.3.4.1\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.MSAjax">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.MSAjax.5.0.0\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.WebForms">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.WebForms.5.0.0\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Telerik.Documents.SpreadsheetStreaming">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET AJAX R3 2021\AdditionalLibraries\Bin45\Telerik.Documents.SpreadsheetStreaming.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.Design">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET AJAX R3 2021\Bin45\Telerik.Web.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.Device.Detection">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET AJAX R3 2021\Bin45\Telerik.Web.Device.Detection.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.Spreadsheet">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET AJAX R3 2021\AdditionalLibraries\Bin45\Telerik.Web.Spreadsheet.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.UI">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET AJAX R3 2021\Bin45\Telerik.Web.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.UI.Skins">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET AJAX R3 2021\Bin45\Telerik.Web.UI.Skins.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.CMapUtils">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET AJAX R3 2021\AdditionalLibraries\Bin45\Telerik.Windows.Documents.CMapUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Core">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET AJAX R3 2021\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Fixed">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET AJAX R3 2021\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Fixed.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Flow">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET AJAX R3 2021\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Flow.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Flow.FormatProviders.Doc">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET AJAX R3 2021\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Flow.FormatProviders.Doc.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Flow.FormatProviders.Pdf">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET AJAX R3 2021\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Flow.FormatProviders.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET AJAX R3 2021\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Spreadsheet.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET AJAX R3 2021\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET AJAX R3 2021\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.Xls">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET AJAX R3 2021\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Spreadsheet.FormatProviders.Xls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Zip">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET AJAX R3 2021\AdditionalLibraries\Bin45\Telerik.Windows.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Zip.Extensions">
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for ASP.NET AJAX R3 2021\AdditionalLibraries\Bin45\Telerik.Windows.Zip.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Abstractions, Version=5.11.6.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Abstractions.5.11.6\lib\net48\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.11.10.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Container.5.11.10\lib\net48\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.WebForms.1.1.3\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls">
+      <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.3\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="Account\Authority.aspx" />
+    <Content Include="Account\ChangePassword.aspx" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Logout.aspx" />
+    <Content Include="Admin\CreateMenu.aspx" />
+    <Content Include="Admin\CreateRole.aspx" />
+    <Content Include="Admin\CreateUser.aspx" />
+    <Content Include="Admin\RolePermission.aspx" />
+    <Content Include="Admin\UserPermission.aspx" />
+    <Content Include="assets\css\4095-rtl.css" />
+    <Content Include="assets\css\4095-rtl.min.css" />
+    <Content Include="assets\css\4095.css" />
+    <Content Include="assets\css\4095.min.css" />
+    <Content Include="assets\css\animate.css" />
+    <Content Include="assets\css\animate.min.css" />
+    <Content Include="assets\css\beyond-less\400-500.css" />
+    <Content Include="assets\css\beyond-less\accordions.css" />
+    <Content Include="assets\css\beyond-less\alerts.css" />
+    <Content Include="assets\css\beyond-less\animations.css" />
+    <Content Include="assets\css\beyond-less\animations.min.css" />
+    <Content Include="assets\css\beyond-less\body.css" />
+    <Content Include="assets\css\beyond-less\breadcrumbs.css" />
+    <Content Include="assets\css\beyond-less\buttons.css" />
+    <Content Include="assets\css\beyond-less\charts.css" />
+    <Content Include="assets\css\beyond-less\chat.css" />
+    <Content Include="assets\css\beyond-less\chat.min.css" />
+    <Content Include="assets\css\beyond-less\checkbox-radiobox.css" />
+    <Content Include="assets\css\beyond-less\colorpicker.css" />
+    <Content Include="assets\css\beyond-less\colors.css" />
+    <Content Include="assets\css\beyond-less\comment.css" />
+    <Content Include="assets\css\beyond-less\dashboard.css" />
+    <Content Include="assets\css\beyond-less\databoxes.css" />
+    <Content Include="assets\css\beyond-less\datepicker.css" />
+    <Content Include="assets\css\beyond-less\daterangepicker.css" />
+    <Content Include="assets\css\beyond-less\dropdowns.css" />
+    <Content Include="assets\css\beyond-less\editors.css" />
+    <Content Include="assets\css\beyond-less\fonts.css" />
+    <Content Include="assets\css\beyond-less\fonts.min.css" />
+    <Content Include="assets\css\beyond-less\forms-inputs.css" />
+    <Content Include="assets\css\beyond-less\fullcalendar.css" />
+    <Content Include="assets\css\beyond-less\helpers.css" />
+    <Content Include="assets\css\beyond-less\invoice.css" />
+    <Content Include="assets\css\beyond-less\labels-badges.css" />
+    <Content Include="assets\css\beyond-less\loading.css" />
+    <Content Include="assets\css\beyond-less\loading.min.css" />
+    <Content Include="assets\css\beyond-less\lockscreen.css" />
+    <Content Include="assets\css\beyond-less\login.css" />
+    <Content Include="assets\css\beyond-less\mail.css" />
+    <Content Include="assets\css\beyond-less\main-container.css" />
+    <Content Include="assets\css\beyond-less\modals.css" />
+    <Content Include="assets\css\beyond-less\navbar.css" />
+    <Content Include="assets\css\beyond-less\nestable-lists.css" />
+    <Content Include="assets\css\beyond-less\notifications.css" />
+    <Content Include="assets\css\beyond-less\orders.css" />
+    <Content Include="assets\css\beyond-less\page-content.css" />
+    <Content Include="assets\css\beyond-less\page-content.min.css" />
+    <Content Include="assets\css\beyond-less\page-header-body.css" />
+    <Content Include="assets\css\beyond-less\pagination.css" />
+    <Content Include="assets\css\beyond-less\popovers.css" />
+    <Content Include="assets\css\beyond-less\pricing.css" />
+    <Content Include="assets\css\beyond-less\profile.css" />
+    <Content Include="assets\css\beyond-less\progressbars.css" />
+    <Content Include="assets\css\beyond-less\register.css" />
+    <Content Include="assets\css\beyond-less\search-help-bar.css" />
+    <Content Include="assets\css\beyond-less\select2.css" />
+    <Content Include="assets\css\beyond-less\sidebar.css" />
+    <Content Include="assets\css\beyond-less\sliders.css" />
+    <Content Include="assets\css\beyond-less\spaces.css" />
+    <Content Include="assets\css\beyond-less\spaces.min.css" />
+    <Content Include="assets\css\beyond-less\spinners.css" />
+    <Content Include="assets\css\beyond-less\switches.css" />
+    <Content Include="assets\css\beyond-less\tables.css" />
+    <Content Include="assets\css\beyond-less\tabs.css" />
+    <Content Include="assets\css\beyond-less\tagsinput.css" />
+    <Content Include="assets\css\beyond-less\tasks.css" />
+    <Content Include="assets\css\beyond-less\tickets.css" />
+    <Content Include="assets\css\beyond-less\timeline.css" />
+    <Content Include="assets\css\beyond-less\timepicker.css" />
+    <Content Include="assets\css\beyond-less\tooltips.css" />
+    <Content Include="assets\css\beyond-less\treeview.css" />
+    <Content Include="assets\css\beyond-less\typography.css" />
+    <Content Include="assets\css\beyond-less\validator.css" />
+    <Content Include="assets\css\beyond-less\variables.css" />
+    <Content Include="assets\css\beyond-less\variables.min.css" />
+    <Content Include="assets\css\beyond-less\wells.css" />
+    <Content Include="assets\css\beyond-less\widget.css" />
+    <Content Include="assets\css\beyond-less\wizards.css" />
+    <Content Include="assets\css\beyond-rtl.css" />
+    <Content Include="assets\css\beyond-rtl.min.css" />
+    <Content Include="assets\css\beyond.css" />
+    <Content Include="assets\css\beyond.min.css" />
+    <Content Include="assets\css\bootstrap-rtl-less\bootstrap-rtl.css" />
+    <Content Include="assets\css\bootstrap-rtl-less\bootstrap-rtl.min.css" />
+    <Content Include="assets\css\bootstrap-rtl-less\mixins-rtl.css" />
+    <Content Include="assets\css\bootstrap-rtl-less\mixins-rtl.min.css" />
+    <Content Include="assets\css\bootstrap-rtl.css" />
+    <Content Include="assets\css\bootstrap-rtl.min.css" />
+    <Content Include="assets\css\bootstrap.css" />
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\custom.css" />
+    <Content Include="assets\css\custom.min.css">
+      <DependentUpon>custom.css</DependentUpon>
+    </Content>
+    <Content Include="assets\css\dataTables.bootstrap.css" />
+    <Content Include="assets\css\demo.css" />
+    <Content Include="assets\css\demo.min.css" />
+    <Content Include="assets\css\font-awesome.css" />
+    <Content Include="assets\css\font-awesome.min.css" />
+    <Content Include="assets\css\other-less\LessHat.css" />
+    <Content Include="assets\css\other-less\lesshat.min.css" />
+    <Content Include="assets\css\scheduler\images\pattern.png" />
+    <Content Include="assets\css\scheduler\images\qsf-demo-canvas-bg.png" />
+    <Content Include="assets\css\scheduler\images\scheduler-bg.jpg" />
+    <Content Include="assets\css\scheduler\images\scheduler-bg.png" />
+    <Content Include="assets\css\scheduler\images\scheduler-sprite.png" />
+    <Content Include="assets\css\scheduler\scheduler.css" />
+    <Content Include="assets\css\skins\azure.css" />
+    <Content Include="assets\css\skins\azure.min.css" />
+    <Content Include="assets\css\skins\black.css" />
+    <Content Include="assets\css\skins\black.min.css" />
+    <Content Include="assets\css\skins\blue.css" />
+    <Content Include="assets\css\skins\blue.min.css" />
+    <Content Include="assets\css\skins\darkblue.css" />
+    <Content Include="assets\css\skins\darkblue.min.css" />
+    <Content Include="assets\css\skins\darkred.css" />
+    <Content Include="assets\css\skins\darkred.min.css" />
+    <Content Include="assets\css\skins\deepblue.css" />
+    <Content Include="assets\css\skins\deepblue.min.css" />
+    <Content Include="assets\css\skins\gray.css" />
+    <Content Include="assets\css\skins\gray.min.css" />
+    <Content Include="assets\css\skins\green.css" />
+    <Content Include="assets\css\skins\green.min.css" />
+    <Content Include="assets\css\skins\orange.css" />
+    <Content Include="assets\css\skins\orange.min.css" />
+    <Content Include="assets\css\skins\pink.css" />
+    <Content Include="assets\css\skins\pink.min.css" />
+    <Content Include="assets\css\skins\purple.css" />
+    <Content Include="assets\css\skins\purple.min.css" />
+    <Content Include="assets\css\skins\skins-mixins.css" />
+    <Content Include="assets\css\skins\skins-mixins.min.css" />
+    <Content Include="assets\css\skins\teal.css" />
+    <Content Include="assets\css\skins\teal.min.css" />
+    <Content Include="assets\css\typicons.css" />
+    <Content Include="assets\css\typicons.min.css" />
+    <Content Include="assets\css\weather-icons.css" />
+    <Content Include="assets\css\weather-icons.min.css" />
+    <Content Include="assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\fonts\typicons.svg" />
+    <Content Include="assets\fonts\weathericons-regular-webfont.svg" />
+    <Content Include="assets\img\angle-down.png" />
+    <Content Include="assets\img\app-45616.png" />
+    <Content Include="assets\img\app.png" />
+    <Content Include="assets\img\attach-blue.png" />
+    <Content Include="assets\img\attach-green.png" />
+    <Content Include="assets\img\attach-red.png" />
+    <Content Include="assets\img\attach-yellow.png" />
+    <Content Include="assets\img\avatars\adam-jansen.jpg" />
+    <Content Include="assets\img\avatars\anhloan.jpg" />
+    <Content Include="assets\img\avatars\anhloan.png" />
+    <Content Include="assets\img\avatars\bing.png" />
+    <Content Include="assets\img\avatars\divyia.jpg" />
+    <Content Include="assets\img\avatars\Javi-Jimenez.jpg" />
+    <Content Include="assets\img\avatars\John-Smith.jpg" />
+    <Content Include="assets\img\avatars\Lee-Munroe.jpg" />
+    <Content Include="assets\img\avatars\Matt-Cheuvront.jpg" />
+    <Content Include="assets\img\avatars\Nicolai-Larson.jpg" />
+    <Content Include="assets\img\avatars\Osvaldus-Valutis.jpg" />
+    <Content Include="assets\img\avatars\Sergey-Azovskiy.jpg" />
+    <Content Include="assets\img\avatars\Stephanie-Walter.jpg" />
+    <Content Include="assets\img\favicon.png" />
+    <Content Include="assets\img\jquery.minicolors.png" />
+    <Content Include="assets\img\logo-1.png" />
+    <Content Include="assets\img\logo-inverted.png" />
+    <Content Include="assets\img\logo-rtl.png" />
+    <Content Include="assets\img\logo-solo.png" />
+    <Content Include="assets\img\logo.png" />
+    <Content Include="assets\img\sort_asc.png" />
+    <Content Include="assets\img\sort_asc_disabled.png" />
+    <Content Include="assets\img\sort_both.png" />
+    <Content Include="assets\img\sort_desc.png" />
+    <Content Include="assets\img\sort_desc_disabled.png" />
+    <Content Include="assets\img\temp1.png" />
+    <Content Include="assets\img\tree-icons.png" />
+    <Content Include="assets\js\beyond.js" />
+    <Content Include="assets\js\beyond.min.js" />
+    <Content Include="assets\js\bootbox\bootbox.js" />
+    <Content Include="assets\js\bootbox\bootbox.min.js" />
+    <Content Include="assets\js\bootstrap.js" />
+    <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\charts\chartjs\Chart.js" />
+    <Content Include="assets\js\charts\chartjs\Chart.min.js" />
+    <Content Include="assets\js\charts\chartjs\chartjs-init.js" />
+    <Content Include="assets\js\charts\easypiechart\easypiechart-init.js" />
+    <Content Include="assets\js\charts\easypiechart\jquery.easypiechart.js" />
+    <Content Include="assets\js\charts\easypiechart\jquery.easypiechart.min.js" />
+    <Content Include="assets\js\charts\flot\flot-init.js" />
+    <Content Include="assets\js\charts\flot\jquery.flot.axislabels.js" />
+    <Content Include="assets\js\charts\flot\jquery.flot.categories.js" />
+    <Content Include="assets\js\charts\flot\jquery.flot.categories.min.js" />
+    <Content Include="assets\js\charts\flot\jquery.flot.crosshair.js" />
+    <Content Include="assets\js\charts\flot\jquery.flot.crosshair.min.js" />
+    <Content Include="assets\js\charts\flot\jquery.flot.fillbetween.js" />
+    <Content Include="assets\js\charts\flot\jquery.flot.fillbetween.min.js" />
+    <Content Include="assets\js\charts\flot\jquery.flot.js" />
+    <Content Include="assets\js\charts\flot\jquery.flot.min.js" />
+    <Content Include="assets\js\charts\flot\jquery.flot.orderBars.js" />
+    <Content Include="assets\js\charts\flot\jquery.flot.pie.js" />
+    <Content Include="assets\js\charts\flot\jquery.flot.pie.min.js" />
+    <Content Include="assets\js\charts\flot\jquery.flot.resize.js" />
+    <Content Include="assets\js\charts\flot\jquery.flot.resize.min.js" />
+    <Content Include="assets\js\charts\flot\jquery.flot.selection.js" />
+    <Content Include="assets\js\charts\flot\jquery.flot.selection.min.js" />
+    <Content Include="assets\js\charts\flot\jquery.flot.stack.js" />
+    <Content Include="assets\js\charts\flot\jquery.flot.stack.min.js" />
+    <Content Include="assets\js\charts\flot\jquery.flot.time.js" />
+    <Content Include="assets\js\charts\flot\jquery.flot.time.min.js" />
+    <Content Include="assets\js\charts\flot\jquery.flot.tooltip.js" />
+    <Content Include="assets\js\charts\flot\jquery.flot.tooltip.min.js" />
+    <Content Include="assets\js\charts\morris\morris-init.js" />
+    <Content Include="assets\js\charts\morris\morris.js" />
+    <Content Include="assets\js\charts\morris\raphael-2.0.2.min.js" />
+    <Content Include="assets\js\charts\sparkline\jquery.sparkline.js" />
+    <Content Include="assets\js\charts\sparkline\sparkline-init.js" />
+    <Content Include="assets\js\colorpicker\jquery.minicolors.js" />
+    <Content Include="assets\js\colorpicker\jquery.minicolors.min.js" />
+    <Content Include="assets\js\datatable\datatables-init.js" />
+    <Content Include="assets\js\datatable\dataTables.bootstrap.js" />
+    <Content Include="assets\js\datatable\dataTables.bootstrap.min.js" />
+    <Content Include="assets\js\datatable\dataTables.tableTools.js" />
+    <Content Include="assets\js\datatable\dataTables.tableTools.min.js" />
+    <Content Include="assets\js\datatable\jquery.dataTables.js" />
+    <Content Include="assets\js\datatable\jquery.dataTables.min.js" />
+    <Content Include="assets\js\datatable\ZeroClipboard.js" />
+    <Content Include="assets\js\datetime\bootstrap-datepicker.js" />
+    <Content Include="assets\js\datetime\bootstrap-timepicker.js" />
+    <Content Include="assets\js\datetime\bootstrap-timepicker.min.js" />
+    <Content Include="assets\js\datetime\daterangepicker.js" />
+    <Content Include="assets\js\datetime\moment.js" />
+    <Content Include="assets\js\datetime\moment.min.js" />
+    <Content Include="assets\js\editors\summernote\summernote.js" />
+    <Content Include="assets\js\editors\summernote\summernote.min.js" />
+    <Content Include="assets\js\editors\wysiwyg\bootstrap-wysiwyg.js" />
+    <Content Include="assets\js\editors\wysiwyg\jquery.hotkeys.js" />
+    <Content Include="assets\js\editors\wysiwyg\prettify.js" />
+    <Content Include="assets\js\fuelux\spinbox\fuelux.spinbox.js" />
+    <Content Include="assets\js\fuelux\spinbox\fuelux.spinbox.min.js" />
+    <Content Include="assets\js\fuelux\treeview\tree-custom.js" />
+    <Content Include="assets\js\fuelux\treeview\tree-custom.min.js" />
+    <Content Include="assets\js\fuelux\treeview\treeview-init.js" />
+    <Content Include="assets\js\fuelux\wizard\wizard-custom.js" />
+    <Content Include="assets\js\fuelux\wizard\wizard-custom.min.js" />
+    <Content Include="assets\js\fullcalendar\fullcalendar.js" />
+    <Content Include="assets\js\fullcalendar\fullcalendar.min.js" />
+    <Content Include="assets\js\jquery-ui-1.10.4.custom.js" />
+    <Content Include="assets\js\jquery-ui-1.10.4.custom.min.js" />
+    <Content Include="assets\js\jquery.min.js" />
+    <Content Include="appsettings.json" />
+    <None Include="assets\js\jqueryval\jquery.validate-vsdoc.js" />
+    <Content Include="assets\js\jqueryval\jquery.validate.js" />
+    <Content Include="assets\js\jqueryval\jquery.validate.min.js" />
+    <Content Include="assets\js\jqueryval\jquery.validate.unobtrusive.js" />
+    <Content Include="assets\js\jqueryval\jquery.validate.unobtrusive.min.js" />
+    <Content Include="assets\js\knob\jquery.knob.js" />
+    <Content Include="assets\js\nestable\jquery.nestable.min.js" />
+    <Content Include="assets\js\scheduler\scheduler.js" />
+    <Content Include="assets\js\select2\select2.js" />
+    <Content Include="assets\js\select2\select2.min.js" />
+    <Content Include="assets\js\skins.js" />
+    <Content Include="assets\js\skins.min.js" />
+    <Content Include="assets\js\slider\jQRangeSlider\jQAllRangeSliders-withRuler-min.js" />
+    <Content Include="assets\js\slider\jQRangeSlider\jquery.mousewheel.min.js" />
+    <Content Include="assets\js\slider\jquery.nouislider.js" />
+    <Content Include="assets\js\slimscroll\jquery.slimscroll.js" />
+    <Content Include="assets\js\slimscroll\jquery.slimscroll.min.js" />
+    <Content Include="assets\js\tagsinput\bootstrap-tagsinput.js" />
+    <Content Include="assets\js\tagsinput\bootstrap-tagsinput.min.js" />
+    <Content Include="assets\js\textarea\jquery.autosize.js" />
+    <Content Include="assets\js\textarea\jquery.autosize.min.js" />
+    <Content Include="assets\js\toastr\toastr.js" />
+    <Content Include="assets\js\toastr\toastr.min.js" />
+    <Content Include="assets\js\validation\bootstrapValidator.js" />
+    <Content Include="assets\js\validation\bootstrapValidator.min.js" />
+    <Content Include="assets\sound\alert.mp3" />
+    <Content Include="assets\swf\copy_csv_xls.swf" />
+    <Content Include="assets\swf\copy_csv_xls_pdf.swf" />
+    <Content Include="assets\swf\skins.js" />
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\Antlr3.Runtime.pdb" />
+    <Content Include="bin\AspNet.ScriptManager.bootstrap.dll" />
+    <Content Include="bin\AspNet.ScriptManager.jQuery.dll" />
+    <Content Include="bin\AspNetDependencyInjection.dll" />
+    <Content Include="bin\AspNetDependencyInjection.pdb" />
+    <Content Include="bin\AspNetDependencyInjection.xml" />
+    <Content Include="bin\Dapper.dll" />
+    <Content Include="bin\Dapper.Transaction.dll" />
+    <Content Include="bin\Dapper.Transaction.xml" />
+    <Content Include="bin\Dapper.xml" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\EntityFramework.xml" />
+    <Content Include="bin\EnvDTE.dll" />
+    <Content Include="bin\Microsoft.AspNet.FriendlyUrls.dll" />
+    <Content Include="bin\Microsoft.AspNet.FriendlyUrls.xml" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Core.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Core.xml" />
+    <Content Include="bin\Microsoft.AspNet.Identity.EntityFramework.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.EntityFramework.xml" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Owin.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Owin.xml" />
+    <Content Include="bin\Microsoft.AspNet.Web.Optimization.WebForms.dll" />
+    <Content Include="bin\Microsoft.Bcl.AsyncInterfaces.dll" />
+    <Content Include="bin\Microsoft.Bcl.AsyncInterfaces.xml" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="bin\Microsoft.Extensions.Configuration.Abstractions.dll" />
+    <Content Include="bin\Microsoft.Extensions.Configuration.Abstractions.xml" />
+    <Content Include="bin\Microsoft.Extensions.Configuration.Binder.dll" />
+    <Content Include="bin\Microsoft.Extensions.Configuration.Binder.xml" />
+    <Content Include="bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
+    <Content Include="bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml" />
+    <Content Include="bin\Microsoft.Extensions.DependencyInjection.dll" />
+    <Content Include="bin\Microsoft.Extensions.DependencyInjection.xml" />
+    <Content Include="bin\Microsoft.Extensions.Primitives.dll" />
+    <Content Include="bin\Microsoft.Extensions.Primitives.xml" />
+    <Content Include="bin\Microsoft.Owin.dll" />
+    <Content Include="bin\Microsoft.Owin.Host.SystemWeb.dll" />
+    <Content Include="bin\Microsoft.Owin.Host.SystemWeb.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.Cookies.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Cookies.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Facebook.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Facebook.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.Google.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Google.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.MicrosoftAccount.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.MicrosoftAccount.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.OAuth.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.OAuth.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.Twitter.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Twitter.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.xml" />
+    <Content Include="bin\Microsoft.Owin.xml" />
+    <Content Include="bin\Microsoft.ScriptManager.MSAjax.dll" />
+    <Content Include="bin\Microsoft.ScriptManager.WebForms.dll" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Newtonsoft.Json.xml" />
+    <Content Include="bin\Npgsql.dll" />
+    <Content Include="bin\Npgsql.xml" />
+    <Content Include="bin\Owin.dll" />
+    <Content Include="bin\ServiceDesk.Application.dll" />
+    <Content Include="bin\ServiceDesk.Application.pdb" />
+    <Content Include="bin\ServiceDesk.Data.dll" />
+    <Content Include="bin\ServiceDesk.Data.pdb" />
+    <Content Include="bin\ServiceDesk.Utilities.dll" />
+    <Content Include="bin\ServiceDesk.Utilities.pdb" />
+    <Content Include="bin\ServiceDesk.WebApp.dll" />
+    <Content Include="bin\ServiceDesk.WebApp.pdb" />
+    <Content Include="bin\stdole.dll" />
+    <Content Include="bin\System.Buffers.dll" />
+    <Content Include="bin\System.Buffers.xml" />
+    <Content Include="bin\System.Memory.dll" />
+    <Content Include="bin\System.Memory.xml" />
+    <Content Include="bin\System.Numerics.Vectors.dll" />
+    <Content Include="bin\System.Numerics.Vectors.xml" />
+    <Content Include="bin\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="bin\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="bin\System.Text.Encodings.Web.dll" />
+    <Content Include="bin\System.Text.Encodings.Web.xml" />
+    <Content Include="bin\System.Text.Json.dll" />
+    <Content Include="bin\System.Text.Json.xml" />
+    <Content Include="bin\System.Threading.Channels.dll" />
+    <Content Include="bin\System.Threading.Channels.xml" />
+    <Content Include="bin\System.Threading.Tasks.Extensions.dll" />
+    <Content Include="bin\System.Threading.Tasks.Extensions.xml" />
+    <Content Include="bin\System.ValueTuple.dll" />
+    <Content Include="bin\System.ValueTuple.xml" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Optimization.xml" />
+    <Content Include="bin\Unity.Abstractions.dll" />
+    <Content Include="bin\Unity.Abstractions.pdb" />
+    <Content Include="bin\Unity.Container.dll" />
+    <Content Include="bin\Unity.Container.pdb" />
+    <Content Include="bin\WebActivatorEx.dll" />
+    <Content Include="bin\WebGrease.dll" />
+    <Content Include="Contact.aspx" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Dashboard.aspx" />
+    <Content Include="DocumentFiles\111_2492020_1baa325a-3ca9-4a66-86f2-6f6c5338020a.PNG" />
+    <Content Include="DocumentFiles\111_2492020_367343d3-86ae-4f9e-a8e3-53b6e4b90705.PNG" />
+    <Content Include="DocumentFiles\111_2492020_6d7c9565-4858-495c-8b93-2df3ee6bc074.PNG" />
+    <Content Include="DocumentFiles\111_2492020_96c2f810-0c3d-4187-b904-0c96d7287a0b.PNG" />
+    <Content Include="DocumentFiles\123 %282%29_2492020_f21a4e21-acda-4317-9107-dc88e5ef7f74.PNG" />
+    <Content Include="DocumentFiles\22_2492020_e84a46e8-a495-4535-a5a4-e9cd3138af55.PNG" />
+    <Content Include="favicon.ico" />
+    <Content Include="Images\document_file.png" />
+    <Content Include="Images\edit-find-replace.png" />
+    <Content Include="Images\edit-find.png" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="assets\css\4095-rtl.css.map" />
+    <Content Include="assets\css\4095.css.map" />
+    <Content Include="assets\css\4095.less" />
+    <Content Include="assets\css\beyond-less\400-500.less" />
+    <Content Include="assets\css\beyond-less\accordions.less" />
+    <Content Include="assets\css\beyond-less\alerts.less" />
+    <Content Include="assets\css\beyond-less\animations.less" />
+    <Content Include="assets\css\beyond-less\body.less" />
+    <Content Include="assets\css\beyond-less\breadcrumbs.less" />
+    <Content Include="assets\css\beyond-less\buttons.less" />
+    <Content Include="assets\css\beyond-less\charts.less" />
+    <Content Include="assets\css\beyond-less\chat.css.map" />
+    <Content Include="assets\css\beyond-less\chat.less" />
+    <Content Include="assets\css\beyond-less\checkbox-radiobox.less" />
+    <Content Include="assets\css\beyond-less\colorpicker.less" />
+    <Content Include="assets\css\beyond-less\colors.less" />
+    <Content Include="assets\css\beyond-less\comment.less" />
+    <Content Include="assets\css\beyond-less\dashboard.less" />
+    <Content Include="assets\css\beyond-less\databoxes.less" />
+    <Content Include="assets\css\beyond-less\datepicker.less" />
+    <Content Include="assets\css\beyond-less\daterangepicker.less" />
+    <Content Include="assets\css\beyond-less\dropdowns.less" />
+    <Content Include="assets\css\beyond-less\editors.less" />
+    <Content Include="assets\css\beyond-less\fonts.less" />
+    <Content Include="assets\css\beyond-less\forms-inputs.less" />
+    <Content Include="assets\css\beyond-less\fullcalendar.less" />
+    <Content Include="assets\css\beyond-less\helpers.less" />
+    <Content Include="assets\css\beyond-less\invoice.less" />
+    <Content Include="assets\css\beyond-less\labels-badges.less" />
+    <Content Include="assets\css\beyond-less\loading.css.map" />
+    <Content Include="assets\css\beyond-less\loading.less" />
+    <Content Include="assets\css\beyond-less\lockscreen.less" />
+    <Content Include="assets\css\beyond-less\login.less" />
+    <Content Include="assets\css\beyond-less\mail.less" />
+    <Content Include="assets\css\beyond-less\main-container.less" />
+    <Content Include="assets\css\beyond-less\modals.less" />
+    <Content Include="assets\css\beyond-less\navbar.less" />
+    <Content Include="assets\css\beyond-less\nestable-lists.less" />
+    <Content Include="assets\css\beyond-less\notifications.less" />
+    <Content Include="assets\css\beyond-less\orders.less" />
+    <Content Include="assets\css\beyond-less\page-content.css.map" />
+    <Content Include="assets\css\beyond-less\page-content.less" />
+    <Content Include="assets\css\beyond-less\page-header-body.less" />
+    <Content Include="assets\css\beyond-less\pagination.less" />
+    <Content Include="assets\css\beyond-less\popovers.less" />
+    <Content Include="assets\css\beyond-less\pricing.less" />
+    <Content Include="assets\css\beyond-less\profile.less" />
+    <Content Include="assets\css\beyond-less\progressbars.less" />
+    <Content Include="assets\css\beyond-less\register.less" />
+    <Content Include="assets\css\beyond-less\search-help-bar.less" />
+    <Content Include="assets\css\beyond-less\select2.less" />
+    <Content Include="assets\css\beyond-less\sidebar.less" />
+    <Content Include="assets\css\beyond-less\sliders.less" />
+    <Content Include="assets\css\beyond-less\spaces.less" />
+    <Content Include="assets\css\beyond-less\spinners.less" />
+    <Content Include="assets\css\beyond-less\switches.less" />
+    <Content Include="assets\css\beyond-less\tables.less" />
+    <Content Include="assets\css\beyond-less\tabs.less" />
+    <Content Include="assets\css\beyond-less\tagsinput.less" />
+    <Content Include="assets\css\beyond-less\tasks.less" />
+    <Content Include="assets\css\beyond-less\tickets.less" />
+    <Content Include="assets\css\beyond-less\timeline.less" />
+    <Content Include="assets\css\beyond-less\timepicker.less" />
+    <Content Include="assets\css\beyond-less\tooltips.less" />
+    <Content Include="assets\css\beyond-less\treeview.less" />
+    <Content Include="assets\css\beyond-less\typography.less" />
+    <Content Include="assets\css\beyond-less\validator.less" />
+    <Content Include="assets\css\beyond-less\variables.css.map" />
+    <Content Include="assets\css\beyond-less\variables.less" />
+    <Content Include="assets\css\beyond-less\wells.less" />
+    <Content Include="assets\css\beyond-less\widget.less" />
+    <Content Include="assets\css\beyond-less\wizards.less" />
+    <Content Include="assets\css\beyond-rtl.css.map" />
+    <Content Include="assets\css\beyond.css.map" />
+    <Content Include="assets\css\beyond.less" />
+    <Content Include="assets\css\bootstrap-less\.csscomb.json" />
+    <Content Include="assets\css\bootstrap-less\.csslintrc" />
+    <Content Include="assets\css\bootstrap-less\alerts.less" />
+    <Content Include="assets\css\bootstrap-less\badges.less" />
+    <Content Include="assets\css\bootstrap-less\bootstrap.less" />
+    <Content Include="assets\css\bootstrap-less\breadcrumbs.less" />
+    <Content Include="assets\css\bootstrap-less\button-groups.less" />
+    <Content Include="assets\css\bootstrap-less\buttons.less" />
+    <Content Include="assets\css\bootstrap-less\carousel.less" />
+    <Content Include="assets\css\bootstrap-less\close.less" />
+    <Content Include="assets\css\bootstrap-less\code.less" />
+    <Content Include="assets\css\bootstrap-less\component-animations.less" />
+    <Content Include="assets\css\bootstrap-less\dropdowns.less" />
+    <Content Include="assets\css\bootstrap-less\forms.less" />
+    <Content Include="assets\css\bootstrap-less\glyphicons.less" />
+    <Content Include="assets\css\bootstrap-less\grid.less" />
+    <Content Include="assets\css\bootstrap-less\input-groups.less" />
+    <Content Include="assets\css\bootstrap-less\jumbotron.less" />
+    <Content Include="assets\css\bootstrap-less\labels.less" />
+    <Content Include="assets\css\bootstrap-less\list-group.less" />
+    <Content Include="assets\css\bootstrap-less\media.less" />
+    <Content Include="assets\css\bootstrap-less\mixins.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\alerts.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\background-variant.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\border-radius.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\buttons.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\center-block.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\clearfix.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\forms.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\gradients.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\grid-framework.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\grid.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\hide-text.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\image.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\labels.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\list-group.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\nav-divider.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\nav-vertical-align.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\opacity.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\pagination.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\panels.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\progress-bar.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\reset-filter.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\resize.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\responsive-visibility.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\size.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\tab-focus.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\table-row.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\text-emphasis.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\text-overflow.less" />
+    <Content Include="assets\css\bootstrap-less\mixins\vendor-prefixes.less" />
+    <Content Include="assets\css\bootstrap-less\modals.less" />
+    <Content Include="assets\css\bootstrap-less\navbar.less" />
+    <Content Include="assets\css\bootstrap-less\navs.less" />
+    <Content Include="assets\css\bootstrap-less\normalize.less" />
+    <Content Include="assets\css\bootstrap-less\pager.less" />
+    <Content Include="assets\css\bootstrap-less\pagination.less" />
+    <Content Include="assets\css\bootstrap-less\panels.less" />
+    <Content Include="assets\css\bootstrap-less\popovers.less" />
+    <Content Include="assets\css\bootstrap-less\print.less" />
+    <Content Include="assets\css\bootstrap-less\progress-bars.less" />
+    <Content Include="assets\css\bootstrap-less\responsive-embed.less" />
+    <Content Include="assets\css\bootstrap-less\responsive-utilities.less" />
+    <Content Include="assets\css\bootstrap-less\scaffolding.less" />
+    <Content Include="assets\css\bootstrap-less\tables.less" />
+    <Content Include="assets\css\bootstrap-less\theme.less" />
+    <Content Include="assets\css\bootstrap-less\thumbnails.less" />
+    <Content Include="assets\css\bootstrap-less\tooltip.less" />
+    <Content Include="assets\css\bootstrap-less\type.less" />
+    <Content Include="assets\css\bootstrap-less\utilities.less" />
+    <Content Include="assets\css\bootstrap-less\variables.less" />
+    <Content Include="assets\css\bootstrap-less\wells.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\alerts-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\badges-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\bootstrap-rtl.css.map" />
+    <Content Include="assets\css\bootstrap-rtl-less\bootstrap-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\button-groups-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\carousel-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\close-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\dropdowns-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\forms-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\grid-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\input-groups-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\list-group-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\media-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\merged-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\mixins-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\mixins\gradients-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\mixins\grid-framework-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\mixins\grid-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\mixins\pagination-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\modals-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\navbar-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\navs-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\normalize-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\pager-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\pagination-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\panels-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\popovers-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\progress-bars-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\responsive-embed-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\tables-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\type-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\utilities-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl-less\variables-rtl.less" />
+    <Content Include="assets\css\bootstrap-rtl.css.map" />
+    <Content Include="assets\css\bootstrap.css.map" />
+    <Content Include="assets\css\demo.css.map" />
+    <Content Include="assets\css\demo.less" />
+    <Content Include="assets\css\font-awesome.css.map" />
+    <Content Include="assets\css\other-less\lesshat.less" />
+    <Content Include="assets\css\skins\azure.css.map" />
+    <Content Include="assets\css\skins\azure.less" />
+    <Content Include="assets\css\skins\black.css.map" />
+    <Content Include="assets\css\skins\black.less" />
+    <Content Include="assets\css\skins\Blue.css.map" />
+    <Content Include="assets\css\skins\Blue.less" />
+    <Content Include="assets\css\skins\darkblue.css.map" />
+    <Content Include="assets\css\skins\darkblue.less" />
+    <Content Include="assets\css\skins\darkred.css.map" />
+    <Content Include="assets\css\skins\darkred.less" />
+    <Content Include="assets\css\skins\deepblue.css.map" />
+    <Content Include="assets\css\skins\deepblue.less" />
+    <Content Include="assets\css\skins\gray.css.map" />
+    <Content Include="assets\css\skins\gray.less" />
+    <Content Include="assets\css\skins\green.css.map" />
+    <Content Include="assets\css\skins\green.less" />
+    <Content Include="assets\css\skins\orange.css.map" />
+    <Content Include="assets\css\skins\orange.less" />
+    <Content Include="assets\css\skins\pink.css.map" />
+    <Content Include="assets\css\skins\pink.less" />
+    <Content Include="assets\css\skins\purple.css.map" />
+    <Content Include="assets\css\skins\purple.less" />
+    <Content Include="assets\css\skins\skins-mixins.css.map" />
+    <Content Include="assets\css\skins\skins-mixins.less" />
+    <Content Include="assets\css\skins\teal.css.map" />
+    <Content Include="assets\css\skins\teal.less" />
+    <Content Include="assets\fonts\BYekan.woff" />
+    <Content Include="assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="assets\fonts\FontAwesome.otf" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\fonts\typicons.eot" />
+    <Content Include="assets\fonts\typicons.ttf" />
+    <Content Include="assets\fonts\typicons.woff" />
+    <Content Include="assets\fonts\weathericons-regular-webfont.eot" />
+    <Content Include="assets\fonts\weathericons-regular-webfont.ttf" />
+    <Content Include="assets\fonts\weathericons-regular-webfont.woff" />
+    <Content Include="assets\fonts\WeatherIcons-Regular.otf" />
+    <Content Include="assets\fonts\YekanWeb-Bold.woff" />
+    <Content Include="assets\fonts\YekanWeb-Regular.woff" />
+    <Content Include="assets\js\beyond.min.js.map" />
+    <Content Include="assets\js\bootbox\bootbox.min.js.map" />
+    <Content Include="assets\js\charts\easypiechart\jquery.easypiechart.min.js.map" />
+    <Content Include="assets\js\charts\flot\jquery.flot.min.js.map" />
+    <Content Include="assets\js\charts\flot\jquery.flot.tooltip.min.js.map" />
+    <Content Include="assets\js\datatable\dataTables.bootstrap.min.js.map" />
+    <Content Include="assets\js\datatable\dataTables.tableTools.min.js.map" />
+    <Content Include="assets\js\datatable\jquery.dataTables.min.js.map" />
+    <Content Include="assets\js\datetime\bootstrap-timepicker.min.js.map" />
+    <Content Include="assets\js\fuelux\spinbox\fuelux.spinbox.min.js.map" />
+    <Content Include="assets\js\fuelux\treeview\tree-custom.min.js.map" />
+    <Content Include="assets\js\fuelux\wizard\wizard-custom.min.js.map" />
+    <Content Include="assets\js\fullcalendar\fullcalendar.min.js.map" />
+    <Content Include="assets\js\tagsinput\bootstrap-tagsinput.min.js.map" />
+    <Content Include="assets\js\toastr\toastr.min.js.map" />
+    <Content Include="ExportTemplates\hdt.xls" />
+    <Content Include="ExportTemplates\hdt.xlsx" />
+    <Content Include="ExportTemplates\tech4life.xls" />
+    <Content Include="ExportTemplates\tech4life.xlsx" />
+    <Content Include="Images\BlueFlag.png" />
+    <Content Include="Images\editview123.png" />
+    <Content Include="Images\excel-btn-12.png" />
+    <Content Include="Images\excel-btn-18.png" />
+    <Content Include="Images\excel-btn-20.png" />
+    <Content Include="Images\excel-btn-26.png" />
+    <Content Include="Images\excel-btn.png" />
+    <Content Include="Images\Materials\Adapter-Actiontec-12V2A" />
+    <Content Include="Images\RedFlag.png" />
+    <Content Include="Images\Thumbs.db" />
+    <Content Include="Index.aspx" />
+    <Content Include="Issues\CancelIssue.aspx" />
+    <Content Include="Issues\DepartmentTask.aspx" />
+    <Content Include="Issues\IssueTimeLife.aspx" />
+    <Content Include="Issues\Task.aspx" />
+    <Content Include="Issues\TaskExecute.aspx" />
+    <Content Include="Issues\TimeLife.ascx" />
+    <Content Include="Issues\UserList.aspx" />
+    <Content Include="Layout.Master" />
+    <Content Include="bin\ServiceDesk.Data.dll.config" />
+    <Content Include="bin\ServiceDesk.WebApp.dll.config" />
+    <None Include="bundleconfig.json" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Images\available.gif" />
+    <Content Include="Images\collapse.jpg" />
+    <Content Include="Images\Downloads-icon.png" />
+    <Content Include="Images\excel-btn-48.png" />
+    <Content Include="Images\excel-icon.ico" />
+    <Content Include="Images\expand.jpg" />
+    <Content Include="Images\flag\GB.png" />
+    <Content Include="Images\flag\RU.png" />
+    <Content Include="Images\flag\US.png" />
+    <Content Include="Images\flag\VN.png" />
+    <Content Include="Images\Grid\AddRecord.gif" />
+    <Content Include="Images\Grid\Cancel.gif" />
+    <Content Include="Images\Grid\Delete.gif" />
+    <Content Include="Images\Grid\Edit.gif" />
+    <Content Include="Images\Grid\grd_Cancel.gif" />
+    <Content Include="Images\Grid\grd_Edit.gif" />
+    <Content Include="Images\Grid\grd_Update.gif" />
+    <Content Include="Images\Grid\Lock.png" />
+    <Content Include="Images\Grid\Refresh.gif" />
+    <Content Include="Images\Grid\Update.gif" />
+    <Content Include="Images\Grid\vista_Cancel.gif" />
+    <Content Include="Images\Grid\vista_Delete.gif" />
+    <Content Include="Images\Grid\vista_Update.gif" />
+    <Content Include="Images\home-1.png" />
+    <Content Include="Images\home.png" />
+    <Content Include="Images\homex16.png" />
+    <Content Include="Images\key32.png" />
+    <Content Include="Images\loading.gif" />
+    <Content Include="Images\Lock.gif" />
+    <Content Include="Images\lockperiod.PNG" />
+    <Content Include="Images\logo\hdt1.png" />
+    <Content Include="Images\logo\tech4life.PNG" />
+    <Content Include="Images\Materials\0006331_dell-precision-tower-3630-workstation-e-2124_550.jpeg" />
+    <Content Include="Images\Materials\0016285_hp-z2-g4-tower-workstation-e-2124_550.png" />
+    <Content Include="Images\Materials\10211_camera_hikvision_hd_tvi_ds_2ce16c0t_it5.jpg" />
+    <Content Include="Images\Materials\10tbWD.JPG" />
+    <Content Include="Images\Materials\111_706a6b4a-2572-42a7-b587-fd1b094d78c3.PNG" />
+    <Content Include="Images\Materials\11e6YAhUdfL.jpg" />
+    <Content Include="Images\Materials\126896016_2790460677870432_5755624491571001862_n_359ecfca-c59d-48a3-b19e-929515a0a145.jpg" />
+    <Content Include="Images\Materials\15211718917749_7.png" />
+    <Content Include="Images\Materials\15461_draytek_v2925_1.jpg" />
+    <Content Include="Images\Materials\1rg59u2c-305m.jpg" />
+    <Content Include="Images\Materials\20170109134603590.jpg" />
+    <Content Include="Images\Materials\20170119153130256.jpg" />
+    <Content Include="Images\Materials\20171125090103084.jpg" />
+    <Content Include="Images\Materials\20180720070512717.png" />
+    <Content Include="Images\Materials\20190125_1707286_1_838054_140445_0.jpg" />
+    <Content Include="Images\Materials\20961_33_wd_purple_1tb_wd10purx%281%29.jpg" />
+    <Content Include="Images\Materials\20961_33_wd_purple_1tb_wd10purx%282%29.jpg" />
+    <Content Include="Images\Materials\20961_33_wd_purple_1tb_wd10purx%283%29.jpg" />
+    <Content Include="Images\Materials\20961_33_wd_purple_1tb_wd10purx%284%29.jpg" />
+    <Content Include="Images\Materials\20961_33_wd_purple_1tb_wd10purx.jpg" />
+    <Content Include="Images\Materials\21041_cap_hdmi_unitek_30m%281%29.jpg" />
+    <Content Include="Images\Materials\21041_cap_hdmi_unitek_30m%282%29.jpg" />
+    <Content Include="Images\Materials\21041_cap_hdmi_unitek_30m.jpg" />
+    <Content Include="Images\Materials\2209_ns_5acl_front_copy_1024x1024.png" />
+    <Content Include="Images\Materials\24914_camera_dahua_dh_hac_hdw1000mp_s3_hdcvi_1_0mp_1%281%29.jpg" />
+    <Content Include="Images\Materials\24914_camera_dahua_dh_hac_hdw1000mp_s3_hdcvi_1_0mp_1%282%29.jpg" />
+    <Content Include="Images\Materials\24914_camera_dahua_dh_hac_hdw1000mp_s3_hdcvi_1_0mp_1.jpg" />
+    <Content Include="Images\Materials\2696_bo_chuong_cua_hikvision_ds_kis201.jpg" />
+    <Content Include="Images\Materials\27880_20170612104244236.jpg" />
+    <Content Include="Images\Materials\29_e07649c9-f446-4014-9f6e-b0f7abf6089d.jpg" />
+    <Content Include="Images\Materials\2IFlWb_simg_de2fe0_500x500_maxb.jpg" />
+    <Content Include="Images\Materials\2qiWwSj_061dc34b-2502-4e86-8da6-4c155c3d4eb1.jpg" />
+    <Content Include="Images\Materials\30W-UL-Gigabit-PoE-Injector-for-HD-Camera.jpg" />
+    <Content Include="Images\Materials\31SijEKGL6L.jpg" />
+    <Content Include="Images\Materials\32740-ngu---n-cho-camera-hikvision-12v-1a%281%29.jpg" />
+    <Content Include="Images\Materials\32740-ngu---n-cho-camera-hikvision-12v-1a.jpg" />
+    <Content Include="Images\Materials\33-704-065-22.jpg" />
+    <Content Include="Images\Materials\3456_switch_dahua_pfs3008_8gt.jpg" />
+    <Content Include="Images\Materials\350_Camera_111_1.jpg" />
+    <Content Include="Images\Materials\3e0db8018881f6e39d4c198f19d2e686.jpg" />
+    <Content Include="Images\Materials\400px-VTO2000A%281%29.png" />
+    <Content Include="Images\Materials\400px-VTO2000A.png" />
+    <Content Include="Images\Materials\41OQnM7WmJL._SX425_%281%29.jpg" />
+    <Content Include="Images\Materials\41OQnM7WmJL._SX425_%282%29.jpg" />
+    <Content Include="Images\Materials\41OQnM7WmJL._SX425_.jpg" />
+    <Content Include="Images\Materials\41rrvISkFPL._SX425_.jpg" />
+    <Content Include="Images\Materials\41xUiKJrX5L._SX425_.jpg" />
+    <Content Include="Images\Materials\591d3778d388d_1495086968%281%29.jpg" />
+    <Content Include="Images\Materials\591d3778d388d_1495086968%282%29.jpg" />
+    <Content Include="Images\Materials\591d3778d388d_1495086968%283%29.jpg" />
+    <Content Include="Images\Materials\591d3778d388d_1495086968.jpg" />
+    <Content Include="Images\Materials\62white21_1024x1024.jpg" />
+    <Content Include="Images\Materials\6930bdd93680715abdffd850e602297c.jfif" />
+    <Content Include="Images\Materials\69638dfa79114a6b6e2628a0a90034fa.jpg" />
+    <Content Include="Images\Materials\7604NI-K1.JPG" />
+    <Content Include="Images\Materials\7f0c1305d48271a998925622c577775f.jpg" />
+    <Content Include="Images\Materials\7_2928973176d848439d685162a1cdc6f9_master.jpg" />
+    <Content Include="Images\Materials\81bWkvBQr-L._SL1500_%281%29.jpg" />
+    <Content Include="Images\Materials\81bWkvBQr-L._SL1500_.jpg" />
+    <Content Include="Images\Materials\910Ubiquiti-PicoStation-M2HP-tai-hai-phong-600x600.png" />
+    <Content Include="Images\Materials\9881364596030.jpg" />
+    <Content Include="Images\Materials\A830RTotolink.png" />
+    <Content Include="Images\Materials\ac-quy-vien-thong-vision-100ah-cong-nghe-agm-6fm100ex-to.jpg" />
+    <Content Include="Images\Materials\aten-converter.jpg" />
+    <Content Include="Images\Materials\bao-tri-va-sua-chua-nha_s710.jpg" />
+    <Content Include="Images\Materials\baotri.jpg" />
+    <Content Include="Images\Materials\BNC-F5.jpg" />
+    <Content Include="Images\Materials\bo-bao-dong-trung-tam-rds-smg10c.png" />
+    <Content Include="Images\Materials\bo-chia-hdmi-1-ra-2-dtech-dt1142-01-550x550.jpg" />
+    <Content Include="Images\Materials\bo-chia-hdmi-1-ra-4-dtech-500x500.jpg" />
+    <Content Include="Images\Materials\bo-keo-dai-hd-qua-cap-mang-60-met-dtech-dt-7009c_0.jpg" />
+    <Content Include="Images\Materials\C3N-Ezviz.jpg" />
+    <Content Include="Images\Materials\C3W-khongFull.jpg" />
+    <Content Include="Images\Materials\C6T_Ezviz.jpg" />
+    <Content Include="Images\Materials\C6T_withRF_Ezviz.jpg" />
+    <Content Include="Images\Materials\ca1200-poe-11-1000x1000.png" />
+    <Content Include="Images\Materials\Cable-HDMI-HDMI-6ft%281%29.jpg" />
+    <Content Include="Images\Materials\Cable-HDMI-HDMI-6ft%282%29.jpg" />
+    <Content Include="Images\Materials\Cable-HDMI-HDMI-6ft%283%29.jpg" />
+    <Content Include="Images\Materials\Cable-HDMI-HDMI-6ft%284%29.jpg" />
+    <Content Include="Images\Materials\Cable-HDMI-HDMI-6ft%285%29.jpg" />
+    <Content Include="Images\Materials\Cable-HDMI-HDMI-6ft%286%29.jpg" />
+    <Content Include="Images\Materials\Cable-HDMI-HDMI-6ft%287%29.jpg" />
+    <Content Include="Images\Materials\Cable-HDMI-HDMI-6ft.jpg" />
+    <Content Include="Images\Materials\camera-dahua-ipc-hdw1230sp-s3.jpg" />
+    <Content Include="Images\Materials\camera-Ezviz-C3X-5.jpg" />
+    <Content Include="Images\Materials\camera-hik-ds2ce10dftf1546482808.jpg" />
+    <Content Include="Images\Materials\camera-ip-wifi-imou-ranger-pro-a26hp-1.jpg" />
+    <Content Include="Images\Materials\camera-quan-sat-ipc-a22ep-imou.jpeg" />
+    <Content Include="Images\Materials\cap-dong-truc-hdpro-rg59-2c-copper.jpg" />
+    <Content Include="Images\Materials\Capture%281%29.PNG" />
+    <Content Include="Images\Materials\Capture.PNG" />
+    <Content Include="Images\Materials\cat-5-e-dung1_-_vcom.jpg" />
+    <Content Include="Images\Materials\cat6-utp-dahua-305m.png" />
+    <Content Include="Images\Materials\cat6-utp-dahua-m.jpg" />
+    <Content Include="Images\Materials\Chan-de-om-cot-camera-PTZ.jpg" />
+    <Content Include="Images\Materials\CP-panasonic.png" />
+    <Content Include="Images\Materials\CS-C1C-1D2WFR.jpg" />
+    <Content Include="Images\Materials\CS-C6N-A0-1C2WFR.png" />
+    <Content Include="Images\Materials\CS-CV310-A0-1C2WFR.jpg" />
+    <Content Include="Images\Materials\CS-CV310-A0-3C2WFRL.jpg" />
+    <Content Include="Images\Materials\CS-X5S-4W.jpg" />
+    <Content Include="Images\Materials\cua-tu-khong-day-SMC01.png" />
+    <Content Include="Images\Materials\Cáp-Vcom-cat-6-UTP-Thùng-305m.jpg" />
+    <Content Include="Images\Materials\d14da1c22672c8dbd8d1cc87704352ca.jpg" />
+    <Content Include="Images\Materials\DAHUA-NVR1104HS-S3-DSS%281%29.jpg" />
+    <Content Include="Images\Materials\DAHUA-NVR1104HS-S3-DSS%2810%29.jpg" />
+    <Content Include="Images\Materials\DAHUA-NVR1104HS-S3-DSS%2811%29.jpg" />
+    <Content Include="Images\Materials\DAHUA-NVR1104HS-S3-DSS%2812%29.jpg" />
+    <Content Include="Images\Materials\DAHUA-NVR1104HS-S3-DSS%2813%29.jpg" />
+    <Content Include="Images\Materials\DAHUA-NVR1104HS-S3-DSS%2814%29.jpg" />
+    <Content Include="Images\Materials\DAHUA-NVR1104HS-S3-DSS%2815%29.jpg" />
+    <Content Include="Images\Materials\DAHUA-NVR1104HS-S3-DSS%2816%29.jpg" />
+    <Content Include="Images\Materials\DAHUA-NVR1104HS-S3-DSS%2817%29.jpg" />
+    <Content Include="Images\Materials\DAHUA-NVR1104HS-S3-DSS%282%29.jpg" />
+    <Content Include="Images\Materials\DAHUA-NVR1104HS-S3-DSS%283%29.jpg" />
+    <Content Include="Images\Materials\DAHUA-NVR1104HS-S3-DSS%284%29.jpg" />
+    <Content Include="Images\Materials\DAHUA-NVR1104HS-S3-DSS%285%29.jpg" />
+    <Content Include="Images\Materials\DAHUA-NVR1104HS-S3-DSS%286%29.jpg" />
+    <Content Include="Images\Materials\DAHUA-NVR1104HS-S3-DSS%287%29.jpg" />
+    <Content Include="Images\Materials\DAHUA-NVR1104HS-S3-DSS%288%29.jpg" />
+    <Content Include="Images\Materials\DAHUA-NVR1104HS-S3-DSS%289%29.jpg" />
+    <Content Include="Images\Materials\DAHUA-NVR1104HS-S3-DSS.jpg" />
+    <Content Include="Images\Materials\dahua-pfs3005-4et-36.jpg" />
+    <Content Include="Images\Materials\dahua-pfs3009-8et-65.jpg" />
+    <Content Include="Images\Materials\dau-ghi-4-kenh-hdcvi-dahua-xvr4104c-x1%281%29.jpg" />
+    <Content Include="Images\Materials\dau-ghi-4-kenh-hdcvi-dahua-xvr4104c-x1%282%29.jpg" />
+    <Content Include="Images\Materials\dau-ghi-4-kenh-hdcvi-dahua-xvr4104c-x1.jpg" />
+    <Content Include="Images\Materials\de-noi-dung-cho-he-thong-chuong-hinh-dahua-vtob108-1553141403.jpg" />
+    <Content Include="Images\Materials\DH-HAC-B1A21P.jpg" />
+    <Content Include="Images\Materials\DH-HAC-T1A21P.jpg" />
+    <Content Include="Images\Materials\DH-IPC-EB5531P-.jpg" />
+    <Content Include="Images\Materials\DH-IPC-EB5531P-1.jpg" />
+    <Content Include="Images\Materials\DS-2CD1043G0-I.jpg" />
+    <Content Include="Images\Materials\DS-2CD2121G0-I-28MM.jpg" />
+    <Content Include="Images\Materials\DS-2CE56C0T-IRP-2A%281%29.jpg" />
+    <Content Include="Images\Materials\DS-2CE56C0T-IRP-2A%282%29.jpg" />
+    <Content Include="Images\Materials\DS-2CE56C0T-IRP-2A%283%29.jpg" />
+    <Content Include="Images\Materials\DS-2CE56C0T-IRP-2A.jpg" />
+    <Content Include="Images\Materials\DS-2CE56H0T-ITP.jpg" />
+    <Content Include="Images\Materials\DS-2CE56H0T-ITPF-1.jpg" />
+    <Content Include="Images\Materials\ds-2de2a404w-de3.jpg" />
+    <Content Include="Images\Materials\DS-7108HQHI-K11.jpg" />
+    <Content Include="Images\Materials\eiki-ek-103x.png" />
+    <Content Include="Images\Materials\giai-bai-toan-nhan-cong-57-.8729.jpg" />
+    <Content Include="Images\Materials\hdd-toshiba-p300-1tb-7200rpm%281%29.jpg" />
+    <Content Include="Images\Materials\hdd-toshiba-p300-1tb-7200rpm%282%29.jpg" />
+    <Content Include="Images\Materials\hdd-toshiba-p300-1tb-7200rpm%283%29.jpg" />
+    <Content Include="Images\Materials\hdd-toshiba-p300-1tb-7200rpm%284%29.jpg" />
+    <Content Include="Images\Materials\hdd-toshiba-p300-1tb-7200rpm.jpg" />
+    <Content Include="Images\Materials\Hi-F0420FBL-A.JPG" />
+    <Content Include="Images\Materials\Hi-F0820GBL-A.jpg" />
+    <Content Include="Images\Materials\HIKVISION-DS-2CD2421G0-IW-1.jpg" />
+    <Content Include="Images\Materials\Hikvision-DS-7204HGHI-F1-TURBO%281%29.jpg" />
+    <Content Include="Images\Materials\Hikvision-DS-7204HGHI-F1-TURBO%282%29.jpg" />
+    <Content Include="Images\Materials\Hikvision-DS-7204HGHI-F1-TURBO%283%29.jpg" />
+    <Content Include="Images\Materials\Hikvision-DS-7204HGHI-F1-TURBO%284%29.jpg" />
+    <Content Include="Images\Materials\Hikvision-DS-7204HGHI-F1-TURBO%285%29.jpg" />
+    <Content Include="Images\Materials\Hikvision-DS-7204HGHI-F1-TURBO%286%29.jpg" />
+    <Content Include="Images\Materials\Hikvision-DS-7204HGHI-F1-TURBO.jpg" />
+    <Content Include="Images\Materials\himedia_h1.jpg" />
+    <Content Include="Images\Materials\HP_23.jpg" />
+    <Content Include="Images\Materials\HR-900-AF-82N.jpg" />
+    <Content Include="Images\Materials\HR901-AF-1621GS.jpg" />
+    <Content Include="Images\Materials\HR901-AF-82N.jpg" />
+    <Content Include="Images\Materials\images.jpg" />
+    <Content Include="Images\Materials\IMOU-IPC-G22P-1.jpg" />
+    <Content Include="Images\Materials\IPC-A22EP-IMOU.JPG" />
+    <Content Include="Images\Materials\IPC-C22EP-IMOU-700.jpg" />
+    <Content Include="Images\Materials\IPC-G26EP-IMOU.jpg" />
+    <Content Include="Images\Materials\IPC-HFW1230MP-S-I2.jpg" />
+    <Content Include="Images\Materials\jack-noi-nguon-9_83211_800x622.93333333333.jpg" />
+    <Content Include="Images\Materials\kit Ezviz.JPG" />
+    <Content Include="Images\Materials\L8se6Z_simg_de2fe0_500x500_maxb.jpg" />
+    <Content Include="Images\Materials\lbe-m5-23-product-model-small%281%29.png" />
+    <Content Include="Images\Materials\lbe-m5-23-product-model-small.png" />
+    <Content Include="Images\Materials\lg-21.5-22mk430h-b3-r.jpg" />
+    <Content Include="Images\Materials\LGS108.JPG" />
+    <Content Include="Images\Materials\logo.png" />
+    <Content Include="Images\Materials\m5525e_without_top.png" />
+    <Content Include="Images\Materials\MailServer.JPG" />
+    <Content Include="Images\Materials\man-chieu-dien-dalite-p170es-170-inch-300.jpg" />
+    <Content Include="Images\Materials\MJfWJQ_simg_de2fe0_500x500_maxb.jpg" />
+    <Content Include="Images\Materials\nanostation-m2-11dbi-24-ghz-2x2-mimo-cpe-external.jpg" />
+    <Content Include="Images\Materials\nguon-camera-dve-12v-1000ma-dsa-12pfg-12-2.jpg" />
+    <Content Include="Images\Materials\nguonPOE-48V.JPG" />
+    <Content Include="Images\Materials\NguonPOE-HDT.JPG" />
+    <Content Include="Images\Materials\Nguon_poe_24_12w_1.jpg" />
+    <Content Include="Images\Materials\no-ip-domains.jpeg" />
+    <Content Include="Images\Materials\Noip.jpg" />
+    <Content Include="Images\Materials\Noip.png" />
+    <Content Include="Images\Materials\ocung_toshiba_500Gb.png" />
+    <Content Include="Images\Materials\ong-luon-dien-pvc-20%281%29.jpg" />
+    <Content Include="Images\Materials\ong-luon-dien-pvc-20%282%29.jpg" />
+    <Content Include="Images\Materials\ong-luon-dien-pvc-20.jpg" />
+    <Content Include="Images\Materials\ong-ruot-ga-luon-day-dien-27-tgcn-17519-chienthang-1524276489.png" />
+    <Content Include="Images\Materials\PFS3009-8ET-96.JPG" />
+    <Content Include="Images\Materials\PFS3106-4P-60.jpg" />
+    <Content Include="Images\Materials\PFS3110-8P-96.jpg" />
+    <Content Include="Images\Materials\PFS4218-16ET-190.png" />
+    <Content Include="Images\Materials\PTZ4x_CameraIP.JPG" />
+    <Content Include="Images\Materials\p_11417_ARES-AR1012.jpg" />
+    <Content Include="Images\Materials\p_16149_HIKVISION-DS-2CE16C0T-IRP%281%29.jpg" />
+    <Content Include="Images\Materials\p_16149_HIKVISION-DS-2CE16C0T-IRP%282%29.jpg" />
+    <Content Include="Images\Materials\p_16149_HIKVISION-DS-2CE16C0T-IRP%283%29.jpg" />
+    <Content Include="Images\Materials\p_16149_HIKVISION-DS-2CE16C0T-IRP.jpg" />
+    <Content Include="Images\Materials\p_16187_LINKSYS-LGS105.jpg" />
+    <Content Include="Images\Materials\p_16195_LINKSYS-LGS308%281%29.jpg" />
+    <Content Include="Images\Materials\p_16195_LINKSYS-LGS308.jpg" />
+    <Content Include="Images\Materials\p_18879_VANTECH-VP-410SA.jpg" />
+    <Content Include="Images\Materials\p_19943_DAHUA-NVR608-64-4K.jpg" />
+    <Content Include="Images\Materials\p_24795_TENDA-S105.jpg" />
+    <Content Include="Images\Materials\p_25171_HIKVISON-DS-2CE16H0T-IT5F.jpg" />
+    <Content Include="Images\Materials\p_25978_hikvision-DS-7104NI-Q1%281%29.jpg" />
+    <Content Include="Images\Materials\p_25978_hikvision-DS-7104NI-Q1%282%29.jpg" />
+    <Content Include="Images\Materials\p_25978_hikvision-DS-7104NI-Q1%283%29.jpg" />
+    <Content Include="Images\Materials\p_25978_hikvision-DS-7104NI-Q1.jpg" />
+    <Content Include="Images\Materials\p_26071_HIKVISION-DS-2CE5AH0T-VPIT3ZF.jpg" />
+    <Content Include="Images\Materials\p_26360_DAHUA-IPC-HFW1230SP%281%29.jpg" />
+    <Content Include="Images\Materials\p_26360_DAHUA-IPC-HFW1230SP%282%29.jpg" />
+    <Content Include="Images\Materials\p_26360_DAHUA-IPC-HFW1230SP%283%29.jpg" />
+    <Content Include="Images\Materials\p_26360_DAHUA-IPC-HFW1230SP.jpg" />
+    <Content Include="Images\Materials\p_26602_HONEYWELL-H2W2PRV3.jpg" />
+    <Content Include="Images\Materials\p_26617_HONEYWELL-HBD3PR2.jpg" />
+    <Content Include="Images\Materials\p_26625_HONEYWELL-HEW2PR2.jpg" />
+    <Content Include="Images\Materials\p_26634_HONEYWELL-HBD1PR1.jpg" />
+    <Content Include="Images\Materials\p_26641_1.jpg" />
+    <Content Include="Images\Materials\p_28335_APTEK-SF1042P.jpg" />
+    <Content Include="Images\Materials\p_28336_APTEK-SF1082P.jpg" />
+    <Content Include="Images\Materials\p_29102_unv-NVR308-32E-B.jpg" />
+    <Content Include="Images\Materials\p_29541_DAHUA-HAC-HFW1230SLP.jpg" />
+    <Content Include="Images\Materials\p_32990_PANASONIC-PT-TX430.jpg" />
+    <Content Include="Images\Materials\p_36949_HIKVISION-DS-3E0109P-E%28B%29.jpg" />
+    <Content Include="Images\Materials\p_39131_HIKVISION-DS-3E0109P-E%28C%29.jpg" />
+    <Content Include="Images\Materials\p_6907_TP-LINK-TL-WR940N.jpg" />
+    <Content Include="Images\Materials\qri1466478839%281%29.jpg" />
+    <Content Include="Images\Materials\qri1466478839.jpg" />
+    <Content Include="Images\Materials\Rack6U.jpg" />
+    <Content Include="Images\Materials\rds-smyk06.jpg" />
+    <Content Include="Images\Materials\rg6-u-coaxial-taiwan-0977.jpg" />
+    <Content Include="Images\Materials\RJ45.jpg" />
+    <Content Include="Images\Materials\s505g-totolink-1000.png" />
+    <Content Include="Images\Materials\s808g-totolink-1000.png" />
+    <Content Include="Images\Materials\Sandisk-micro-ultra-a1-256GB.jpg" />
+    <Content Include="Images\Materials\sandisk_32gb.jpg" />
+    <Content Include="Images\Materials\sandisk_64gb.jpg" />
+    <Content Include="Images\Materials\Sedter1080.png" />
+    <Content Include="Images\Materials\Sedter1080P.png" />
+    <Content Include="Images\Materials\Server SVMS.JPG" />
+    <Content Include="Images\Materials\Server.jpg" />
+    <Content Include="Images\Materials\SMJD01-800x800.jpg" />
+    <Content Include="Images\Materials\SMXD01-800x800.jpg" />
+    <Content Include="Images\Materials\svz1493949093.jpg" />
+    <Content Include="Images\Materials\switch-dahua-PFS3005-5GT.jpg" />
+    <Content Include="Images\Materials\teg1009p-ei_3_1.jpg" />
+    <Content Include="Images\Materials\TenDa 4port%281%29.jpg" />
+    <Content Include="Images\Materials\TenDa 4port.jpg" />
+    <Content Include="Images\Materials\Tenda-SG108.jpg" />
+    <Content Include="Images\Materials\tenda_s108.JPG" />
+    <Content Include="Images\Materials\tenda_s16.JPG" />
+    <Content Include="Images\Materials\test1.jpg" />
+    <Content Include="Images\Materials\test2.jpg" />
+    <Content Include="Images\Materials\test3.jpg" />
+    <Content Include="Images\Materials\test4.jpg" />
+    <Content Include="Images\Materials\test5.jpg" />
+    <Content Include="Images\Materials\the-nho-32gb-western-wd-purple-class-10-2.jpg" />
+    <Content Include="Images\Materials\thenho-samsung-32gb.JPG" />
+    <Content Include="Images\Materials\thenho-sandisk-128gb.jpg" />
+    <Content Include="Images\Materials\TL-WR841N.jpg" />
+    <Content Include="Images\Materials\TP-LINK-TL-SG1016D.jpg" />
+    <Content Include="Images\Materials\Vantech_Cu_1.JPG" />
+    <Content Include="Images\Materials\Vantech_Cu_2.jpg" />
+    <Content Include="Images\Materials\vat-tu-phu.jpg" />
+    <Content Include="Images\Materials\VCOM-CAT5E-UTP-Cuongluc.JPG" />
+    <Content Include="Images\Materials\vga-unitek.png" />
+    <Content Include="Images\Materials\vo-tu-dien-cong-nghiep.jpg" />
+    <Content Include="Images\Materials\VTH5221DDW-copy.jpg" />
+    <Content Include="Images\Materials\VTNS1060A-2.jpg" />
+    <Content Include="Images\Materials\wcap-ac-pro.png" />
+    <Content Include="Images\Materials\wcap-w-access-point-24ghz-300mbps-cloud-access-point.jpg" />
+    <Content Include="Images\Materials\wd-500-gb.png" />
+    <Content Include="Images\Materials\WD81PURZ.jpg" />
+    <Content Include="Images\Materials\win-10-pro-1.png" />
+    <Content Include="Images\Materials\WIS-Q2300.jpg" />
+    <Content Include="Images\Materials\WIS-WCAP-AC.jpg" />
+    <Content Include="Images\Materials\XVR1A04-1.jpg" />
+    <Content Include="Images\People.png" />
+    <Content Include="Images\PeopleLock.png" />
+    <Content Include="Images\Russian.jpg" />
+    <Content Include="Images\taken.gif" />
+    <Content Include="Images\UnLock.png" />
+    <Content Include="Images\unlockperiod.PNG" />
+    <Content Include="Images\vietnam.jpg" />
+    <Content Include="PageSidebar.ascx" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Site.Master" />
+    <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Web.config" />
+    <Content Include="Bundle.config" />
+    <Content Include="Site.Mobile.Master" />
+    <Content Include="SiteMap\SiteMap.sitemap" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\Authority.aspx.cs">
+      <DependentUpon>Authority.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Authority.aspx.designer.cs">
+      <DependentUpon>Authority.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CreateMenu.aspx.cs">
+      <DependentUpon>CreateMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CreateMenu.aspx.designer.cs">
+      <DependentUpon>CreateMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CreateRole.aspx.cs">
+      <DependentUpon>CreateRole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CreateRole.aspx.designer.cs">
+      <DependentUpon>CreateRole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CreateUser.aspx.cs">
+      <DependentUpon>CreateUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CreateUser.aspx.designer.cs">
+      <DependentUpon>CreateUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\RolePermission.aspx.cs">
+      <DependentUpon>RolePermission.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\RolePermission.aspx.designer.cs">
+      <DependentUpon>RolePermission.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserPermission.aspx.cs">
+      <DependentUpon>UserPermission.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserPermission.aspx.designer.cs">
+      <DependentUpon>UserPermission.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\languages\English\Resource.en-US.designer.cs" />
+    <Compile Include="App_GlobalResources\languages\English\Resource.en-US1.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.en-US.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\languages\Fallback\Resource.designer.cs" />
+    <Compile Include="App_GlobalResources\languages\Fallback\Resource1.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\languages\Russian\Resource.ru-RU.designer.cs" />
+    <Compile Include="App_GlobalResources\languages\Russian\Resource.ru-RU1.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.ru-RU.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\languages\Vietnamese\Resource.vi-VN.designer.cs" />
+    <Compile Include="App_GlobalResources\languages\Vietnamese\Resource.vi-VN1.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.vi-VN.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Culture\LanguagePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\CancelIssue.aspx.cs">
+      <DependentUpon>CancelIssue.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Issues\CancelIssue.aspx.designer.cs">
+      <DependentUpon>CancelIssue.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\DepartmentTask.aspx.cs">
+      <DependentUpon>DepartmentTask.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Issues\DepartmentTask.aspx.designer.cs">
+      <DependentUpon>DepartmentTask.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\IssueTimeLife.aspx.cs">
+      <DependentUpon>IssueTimeLife.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Issues\IssueTimeLife.aspx.designer.cs">
+      <DependentUpon>IssueTimeLife.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\Task.aspx.cs">
+      <DependentUpon>Task.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Issues\Task.aspx.designer.cs">
+      <DependentUpon>Task.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\TaskExecute.aspx.cs">
+      <DependentUpon>TaskExecute.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Issues\TaskExecute.aspx.designer.cs">
+      <DependentUpon>TaskExecute.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\TimeLife.ascx.cs">
+      <DependentUpon>TimeLife.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Issues\TimeLife.ascx.designer.cs">
+      <DependentUpon>TimeLife.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Issues\UserList.aspx.cs">
+      <DependentUpon>UserList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Issues\UserList.aspx.designer.cs">
+      <DependentUpon>UserList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Layout.Master.cs">
+      <DependentUpon>Layout.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layout.Master.designer.cs">
+      <DependentUpon>Layout.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PageSidebar.ascx.cs">
+      <DependentUpon>PageSidebar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageSidebar.ascx.designer.cs">
+      <DependentUpon>PageSidebar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceProvider.cs" />
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.designer.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Startup.cs" />
+    <Compile Include="ViewSwitcher.ascx.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.designer.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="bin\roslyn\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceDesk.Data\ServiceDesk.Data.csproj">
+      <Project>{e1ab7fb0-4541-4019-91cf-89392487b45b}</Project>
+      <Name>ServiceDesk.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServiceDesk.Utilities\ServiceDesk.Utilities.csproj">
+      <Project>{8646030e-06d7-4b1b-8cb2-b13e532937ed}</Project>
+      <Name>ServiceDesk.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\languages\English\Resource.en-US.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Resource.en-US1.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\languages\Fallback\Resource.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Resource1.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\languages\Russian\Resource.ru-RU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Resource.ru-RU1.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\languages\Vietnamese\Resource.vi-VN.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Resource.vi-VN1.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>57341</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44369/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\BuildBundlerMinifier.3.2.449\build\BuildBundlerMinifier.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\BuildBundlerMinifier.3.2.449\build\BuildBundlerMinifier.targets'))" />
+  </Target>
+  <Import Project="..\packages\BuildBundlerMinifier.3.2.449\build\BuildBundlerMinifier.targets" Condition="Exists('..\packages\BuildBundlerMinifier.3.2.449\build\BuildBundlerMinifier.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

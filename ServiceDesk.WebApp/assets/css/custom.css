@@ -1,0 +1,369 @@
+﻿
+div.RadComboBoxDropDown .rcbSlide {
+    display: block !important;
+}
+
+.marginText {
+    margin-top: 3px;
+}
+
+.RadGrid_Office2010Blue .rgMasterTable, .RadGrid_Office2010Blue .rgDetailTable, .RadGrid_Office2010Blue .rgGroupPanel table,
+.RadGrid_Office2010Blue .rgCommandRow table, .RadGrid_Office2010Blue .rgEditForm table, .RadGrid_Office2010Blue .rgPager table {
+    line-height: 20px;
+}
+
+.RadGrid .rgInput, .RadGrid .rgEditRow > td > [type="text"], .RadGrid .rgEditForm td > [type="text"], .RadGrid .rgBatchContainer > [type="text"], .RadGrid .rgFilterBox, .RadGrid .rgFilterApply, .RadGrid .rgFilterCancel {
+    border-width: 0;
+    padding: 0;
+}
+
+.rgEditForm td {
+    padding-left: 3px;
+    padding-top: 3px;
+}
+
+.RadGrid_Office2010Blue .rgEditForm {
+    border: none;
+    padding: 0;
+}
+
+caption {
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.GridDataDiv_Default {
+    overflow-y: hidden !important;
+}
+
+.rmItem #ctl00_MainContent_RadGrid1_rghcMenu_i3_i1_chkctl00_MainContent_RadGrid1_ctl00SupplierId,
+label[for="ctl00_MainContent_RadGrid1_rghcMenu_i3_i1_chkctl00_MainContent_RadGrid1_ctl00SupplierId"] {
+    border: 0;
+    clip: rect(0 0 0 0);
+    display: none;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    visibility: hidden;
+    width: 1px;
+}
+
+#ctl00_MainContent_RadGrid1_ctl00 input[type="checkbox"], input[type=radio] {
+    -webkit-appearance: checkbox;
+    border-radius: 0;
+    left: 0;
+    opacity: 1;
+    position: relative;
+}
+
+ctl00_MainContent_RadGrid1_ctl00_ctl04_ctl00
+.rmVertical .rmFirst, .rmVertical .rmLast {
+    border: 0;
+    clip: rect(0 0 0 0);
+    display: none;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    visibility: hidden;
+    width: 1px;
+}
+
+#edit-form input[type="checkbox"], input[type=radio] {
+    -webkit-appearance: checkbox;
+    border-radius: 0;
+    /*left: 20px;*/
+    opacity: 1;
+    position: relative;
+}
+
+#edit-form .checkbox {
+    margin-top: 0 !important
+}
+
+.rgMasterTable thead tr:nth-child(2) {
+    background-color: white !important;
+    border-top: none;
+}
+
+.rgMasterTable tbody tr td {
+    border-bottom: solid 1px #aaa;
+}
+
+.rgMasterTable .widget {
+    margin: 0 !important;
+}
+
+#ctl00_MainContent_RadGrid1_GridData {
+    overflow-y: hidden !important;
+    width: 100%;
+    height: auto !important;
+}
+
+.rddtSlide input[type="checkbox"], input[type=radio] {
+    -webkit-appearance: checkbox;
+    border-radius: 0;
+    left: 0;
+    opacity: 1;
+    position: relative;
+    margin-left: 0
+}
+
+.checkbox {
+    margin: 0;
+}
+
+.RadGrid .rgEditPopup {
+    top: -60px !important;
+    left: 0 !important;
+}
+
+.processing {
+    background-color: #4CAF50;
+    border-radius: 46px;
+    padding: 3px
+}
+
+.RadSlider .rslHorizontal .rslItemsWrapper li {
+    height: 33px !important
+}
+
+
+/* Green */
+.Complete {
+    background-color: #2196F3;
+    border-radius: 46px;
+    padding: 3px
+}
+/* Blue */
+.waiting {
+    background-color: #ff9800;
+    border-radius: 46px;
+    padding: 3px
+}
+/* Orange */
+.cancel {
+    background-color: #f44336;
+    border-radius: 46px;
+    padding: 3px
+}
+/* Red */
+.fausing {
+    background-color: #e7e7e7;
+    color: black;
+    border-radius: 46px;
+    padding: 3px
+}
+
+.transfer {
+    background-color: #9370db;
+    color: black;
+    border-radius: 46px;
+    padding: 3px
+}
+
+/*#Wizards*/
+.wizard.wizard-wired {
+    background: #fbfbfb !important;
+    border-bottom: 0 !important;
+}
+
+    .wizard.wizard-wired ul li {
+        background: #fbfbfb !important;
+    }
+
+.wizard.wizard-tabbed ul li.cancel {
+    background-color: #fbfbfb;
+}
+
+.wizard.wizard-wired ul li.cancel {
+    background-color: #ffffff;
+}
+
+    .wizard.wizard-wired ul li.cancel .step:before {
+        font-size: 22px;
+        line-height: 36px;
+    }
+
+    .wizard.wizard-wired ul li.cancel:hover {
+        background-color: #ffffff;
+    }
+
+.wizard ul.previous-disabled li.cancel {
+    cursor: default;
+}
+
+    .wizard ul.previous-disabled li.cancel:hover {
+        background: #f3f3f3;
+        cursor: default;
+    }
+
+        .wizard ul.previous-disabled li.cancel:hover .chevron:before {
+            border-left-color: #f3f3f3;
+        }
+
+.wizard ul li.cancel {
+    background: #f5f5f5;
+    color: #444444;
+}
+
+    .wizard ul li.cancel:before {
+        display: block;
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: -1px;
+        height: 2px;
+        max-height: 2px;
+        overflow: hidden;
+        background-color: #F82952;
+        z-index: 10000;
+    }
+
+.wizard ul li.complete:hover {
+    background: #eeeeee;
+    cursor: pointer;
+}
+
+.wizard ul li.cancel:hover .chevron:before {
+    border-left: 14px solid #eeeeee;
+}
+
+.wizard ul li.cancel .chevron:before {
+    border-left: 14px solid #f5f5f5;
+}
+
+.wizard ul li.cancel .step {
+    color: #F82952;
+    border-color: #F82952;
+}
+
+    .wizard ul li.cancel .step:before {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        line-height: 20px;
+        text-align: center;
+        border-radius: 100%;
+        content: "\f00d";
+        background-color: #ffffff;
+        z-index: 3;
+        font-family: FontAwesome;
+        font-size: 12px;
+        color: #F82952;
+    }
+/*#endregion Wizards*/
+
+/*#MultiSelect*/
+.dropdown-header {
+    border-width: 0 0 1px 0;
+    text-transform: uppercase;
+    background-color: ghostwhite;
+    background-repeat: no-repeat;
+}
+
+    .dropdown-header > span, .dropdown-item > span {
+        display: inline-block;
+        padding: 10px;
+    }
+
+.dropdown-item {
+    display: inline-block;
+    padding: 10px;
+    border: 0 !important;
+}
+
+    .dropdown-header > span:first-child, .dropdown-item > span:first-child {
+        width: 250px;
+    }
+
+.k-list-container > .k-footer {
+    border-width: 1px 0 0 0;
+    background-color: ghostwhite;
+    padding: 10px;
+}
+
+.selected-value {
+    display: inline-block;
+    vertical-align: middle;
+    width: 18px;
+    height: 18px;
+    background-size: 100%;
+    margin-right: 5px;
+}
+
+.RadMultiSelectDropDown .k-item {
+    line-height: 1em;
+    min-width: 300px;
+}
+
+/* Material Theme padding adjustment*/
+
+.RadMultiSelectDropDown_Material .k-item,
+.RadMultiSelectDropDown_Material .k-item.k-state-hover,
+.RadMultiSelectDropDown_MaterialBlack .k-item,
+.RadMultiSelectDropDown_MaterialBlack .k-item.k-state-hover {
+    padding-left: 5px;
+    border-left: 0;
+}
+
+.RadMultiSelectDropDown .k-item > span {
+    display: inline-block;
+    vertical-align: top;
+}
+
+    .RadMultiSelectDropDown .k-item > span:first-child {
+        margin: 10px;
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+
+.RadMultiSelectDropDown h3 {
+    font-size: 1.2em;
+    font-weight: normal;
+    margin: 0 0 1px 0;
+    padding: 0;
+}
+
+.RadMultiSelectDropDown p {
+    margin: 0;
+    padding: 0;
+    font-size: .8em;
+}
+/*#endregion MultiSelect*/
+
+.RadSlider .rslHorizontal .rslItemsWrapper li {
+    height: 33px !important
+}
+
+.RadGrid .rgAdd {
+    background: #2dc3e8;
+    /*-moz-box-shadow: 3px 3px 5px 0px #666;*/
+    -moz-box-shadow: 2px 2px 2px 0 #666;
+    -webkit-box-shadow: 2px 2px 2px 0 #666;
+    box-shadow: 2px 2px 2px 0 #666;
+}
+
+.RadAsyncUpload {
+    width: 100%;
+}
+
+
+.RadUpload .ruUploadProgress {
+    width: 210px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: top;
+}
+
+.rgMasterTable {
+    color: #000 !important;
+}
+
+.RadWindow .rwIcon{display: none !important}
+

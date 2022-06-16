@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" enableLocalization="true">
+  <siteMapNode url="~/Default" title="Home">
+    <siteMapNode url="" title="Danh mục" >
+      <siteMapNode url="~/Categories/Agency" title="Đại lý" />
+      <siteMapNode url="~/Categories/BankAccount" title="Tài khoản" />
+      <siteMapNode url="~/Categories/Company" title="Công ty" />
+      <siteMapNode url="~/Categories/Customer" title="Khách hàng" />
+      <siteMapNode url="~/Categories/Discount" title="Giảm giá" />
+      <siteMapNode url="~/Categories/Employee" title="Nhân viên" />
+      <siteMapNode url="~/Categories/EmployeeType" title="Phân loại nhân viên" />
+      <siteMapNode url="~/Categories/QuotationType" title="Phân loại báo giá" />
+    </siteMapNode>
+
+    <siteMapNode url="" title="Vật tư" >
+      <siteMapNode url="~/Inventories/Material" title="Mã vật tư" />
+      <siteMapNode url="~/Inventories/Issue" title="Xuất kho" />
+      <siteMapNode url="~/Inventories/Receipt" title="Nhập kho" />
+      <siteMapNode url="~/Inventories/Inventory" title="Tồn kho" />
+      <siteMapNode url="~/Inventories/Store" title="Kho" />
+      <siteMapNode url="~/Inventories/Approved" title="Duyệt phiếu xuất nhập" />
+    </siteMapNode>
+    
+    <siteMapNode url="" title="Dự án" >
+      <siteMapNode url="~/Projects/Project" title="Danh mục dự án" />
+      <siteMapNode url="~/Projects/ProjectStatus" title="Tình trạng dự án" />
+    </siteMapNode>
+    
+    <siteMapNode url="" title="Kinh doanh" >
+      <siteMapNode url="~/Business/Contract" title="Hợp đồng" />
+      <siteMapNode url="~/Business/Quotation" title="Báo giá" />
+    </siteMapNode>
+    
+    <siteMapNode url="" title="Thi công" >
+      <siteMapNode url="~/Constructions/Construct" title="Lịch thi công" />
+      <siteMapNode url="~/Constructions/EmployeeConstruct" title="Nhân sự thi công" />
+    </siteMapNode>
+    
+    <siteMapNode url="" title="Kế toán" >
+      <siteMapNode url="" title="Thu chi" />
+    </siteMapNode>
+
+    <siteMapNode url="~/Account/ChangePassword" title="Thay đổi Password" >
+    </siteMapNode>
+
+    <siteMapNode url="" title="Quản trị" >
+      <siteMapNode url="~/Admin/CreateMenu" title="Thêm item Menu" />
+      <siteMapNode url="~/Admin/CreateRole" title="Thêm Role" />
+      <siteMapNode url="~/Admin/CreateUser" title="Thêm User" />
+      <siteMapNode url="~/Admin/MenuPermission" title="Phân quyền User-Menu" />
+      <siteMapNode url="~/Admin/UserPermissions" title="Phân quyền User" />
+    </siteMapNode>
+
+    <siteMapNode url="~/Account/Logout" title="Thoát" >
+    </siteMapNode>
+
+  </siteMapNode>
+</siteMap>
+
