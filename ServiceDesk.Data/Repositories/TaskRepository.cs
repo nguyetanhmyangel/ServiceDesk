@@ -39,22 +39,16 @@ namespace ServiceDesk.Data.Repositories
             using (var dbConnection = new NpgsqlConnection(Config.DbInfo))
             {
                 if (dbConnection.State == ConnectionState.Closed) dbConnection.Open();
-                // use Isolation Level in Transaction
-                using (var transaction = dbConnection.BeginTransaction())
+                try
                 {
-                    try
-                    {
-                        // insert new department to Task if not exist
-                        var updateTaskQuery = "update \"Tasks\" set \"IsSendMail\" = 't'" +
-                            " where \"DepartmentId\" in ( " + multiDepartmentIds + ") and \"IssueId\" = " + issueId;
-                        transaction.Execute(updateTaskQuery);
-                        transaction.Commit();
-                    }
-                    catch (Exception ex)
-                    {
-                        //ex.Message.ToString();
-                        transaction.Rollback();
-                    }
+                    // insert new department to Task if not exist
+                    var updateTaskQuery = "update \"Tasks\" set \"IsSendMail\" = 't'" +
+                        " where \"DepartmentId\" in ( " + multiDepartmentIds + ") and \"IssueId\" = " + issueId;
+                    dbConnection.Execute(updateTaskQuery);
+                }
+                catch (Exception ex)
+                {
+                    //ex.Message.ToString();
                 }
             }
         }
@@ -74,7 +68,7 @@ namespace ServiceDesk.Data.Repositories
                             var updateTaskQuery = "update \"Tasks\" set \"IsSendMail\" = 't'" +
                             " where \"DepartmentId\" in ( " + multiDepartmentIds + ") and \"IssueId\" = " + issueId + " " +
                             "and  EXISTS (select 1 from \"Tasks\" where \"IssueId\" = " + issueId + ")";
-                            transaction.Execute(updateTaskQuery);
+                            dbConnection.Execute(updateTaskQuery, transaction: transaction);
                         }
 
 
@@ -113,6 +107,17 @@ namespace ServiceDesk.Data.Repositories
                     {
                         var statusId = model.StatusId == Config.Waiting ? Config.Processing : model.StatusId;
                         var newDepartments = multiDepartments.ToList();
+
+                        dbConnection.Execute("Update \"Issues\" set \"StatusId\" = @StatusId ," +
+                            "\"Description\" = @Description, \"PriorityId\" = @PriorityId where \"Id\" = @IssueId",
+                            new
+                            {
+                                StatusId = statusId,
+                                Description = model.Description,
+                                PriorityId = model.PriorityId,
+                                IssueId = model.IssueId
+                            }, transaction: transaction);
+
                         if (newDepartments.Any())
                         {
                             foreach (var newDepartmentId in newDepartments.Select(Helper.ConvertToInt))
@@ -137,14 +142,6 @@ namespace ServiceDesk.Data.Repositories
 
                         if (model.StatusId == Config.Complete || model.StatusId == Config.Cancel)
                         {
-                            transaction.Execute("Update \"Issues\" set \"StatusId\" = @StatusId " +
-                            "where \"Id\" = @IssueId",
-                            new
-                            {
-                                StatusId = model.StatusId,
-                                IssueId = model.IssueId
-                            });
-
                             transaction.Execute("Update \"Tasks\" set \"StatusId\" = @StatusId " +
                             "where \"IssueId\" = @IssueId EXISTS(select 1 from \"Tasks\" where \"IssueId\" = @IssueId)",
                             new
@@ -164,18 +161,6 @@ namespace ServiceDesk.Data.Repositories
                                     IssueId = model.IssueId
                                 });
 
-                        }
-                        else
-                        {
-                            transaction.Execute("Update \"Issues\" set \"StatusId\" = @StatusId ," +
-                            "\"Description\" = @Description, \"PriorityId\" = @PriorityId where \"Id\" = @IssueId",
-                            new
-                            {
-                                StatusId = statusId,
-                                Description = model.Description,
-                                PriorityId = model.PriorityId,
-                                IssueId = model.IssueId
-                            });
                         }
                         transaction.Commit();
                     }
@@ -205,7 +190,7 @@ namespace ServiceDesk.Data.Repositories
                         var statusId = model.StatusId == Config.Waiting ? Config.Processing : model.StatusId;
                         if (model.TaskId > 0)
                         {
-                            transaction.Execute("Update \"Tasks\" set \"StartDate\" = @StartDate, " +
+                            dbConnection.Execute("Update \"Tasks\" set \"StartDate\" = @StartDate, " +
                             "\"EndDate\" = @EndDate, \"StatusId\" = @StatusId , \"PriorityId\" = @PriorityId ," +
                             "\"PrivateDescription\" = @PrivateDescription , \"UpdateUser\" = @UpdateUser " +
                             "where \"Id\" = @TaskId",
@@ -218,14 +203,13 @@ namespace ServiceDesk.Data.Repositories
                                 PrivateDescription = model.PrivateDescription,
                                 UpdateUser = model.UpdateUser,
                                 TaskId = model.TaskId ///---
-                            });
+                            }, transaction: transaction);
                         }
                         else
                         {
                             newTaskId = transaction.ExecuteScalar<int>("insert into \"Tasks\" (\"DepartmentId\", " +
                                     "\"IssueId\", \"StatusId\",\"PriorityId\", \"Description\", \"CreateUser\") " +
-                                    "Values (@DepartmentId,  @IssueId, @StatusId, @PriorityId, @Description, @CreateUser) " +
-                                    "ON CONFLICT (\"IssueId\", \"DepartmentId\") DO NOTHING",
+                                    "Values (@DepartmentId,  @IssueId, @StatusId, @PriorityId, @Description, @CreateUser) RETURNING \"Id\"",
                                     new
                                     {
                                         DepartmentId = model.DepartmentId,
@@ -237,92 +221,96 @@ namespace ServiceDesk.Data.Repositories
                                     });
                         }
 
-                        // add users
-                        var users = multiUsers.ToList();
-                        if (users.Any())
+                        if (newTaskId > 0)
                         {
-                            // set query
-                            var updateTaskExecutes = "Update \"TaskExecutes\" a  set \"StatusId\" = " + Config.Cancel +
-                                "from \"Users\" b " +
-                                "where a.\"UserId\" = b.\"UserId\" and a.\"UserId\" not in (";
-
-                            foreach (var userId in users)
+                            // add users
+                            var users = multiUsers.ToList();
+                            if (users.Any())
                             {
-                                transaction.Execute("insert into \"TaskExecutes\" (\"TaskId\", \"UserId\"," +
-                                                    "\"CreateUser\") Values (@TaskId, @UserId, @CreateUser) " +
-                                                    "ON CONFLICT (\"TaskId\", \"UserId\") DO NOTHING",
-                                    new
-                                    {
-                                        TaskId = newTaskId,
-                                        UserId = userId,
-                                        StatusId = Config.Waiting,
-                                        CreateUser = model.UpdateUser ///---
-                                    });
+                                // set query
+                                var updateTaskExecutes = "Update \"TaskExecutes\" a  set \"StatusId\" = " + Config.Cancel +
+                                    "from \"Users\" b " +
+                                    "where a.\"UserId\" = b.\"UserId\" and a.\"UserId\" not in (";
 
-                                updateTaskExecutes += userId + ",";
-                            }
-
-                            // set status TaskExecute is Cancel user not in list
-
-                            // update TaskExecutes of Task with current User
-                            if (model.StatusId == Config.Cancel || model.StatusId == Config.Complete)
-                            {
-                                transaction.Execute("Update \"TaskExecutes\" a set \"StatusId\" = @StatusId " +
-                                    "from \"Users\" b where a.\"UserId\" = b.\"UserId\" " +
-                                    "and a.\"TaskId\" = @TaskId and b.\"DepartmentId\" = @DepartmentId and " +
-                                    "EXISTS(select 1 from \"TaskExecutes\" b " +
-                                    "inner join \"Tasks\" b1 on b.\"TaskId\" = b1.\"Id\" " +
-                                    "where b1.\"Id\" = @TaskId)",
-                                new
+                                foreach (var userId in users)
                                 {
-                                    StatusId = model.StatusId,
-                                    TaskId = newTaskId,
-                                    DepartmentId = model.DepartmentId
-                                });
-                            }
-                            else
-                            {
-                                updateTaskExecutes = updateTaskExecutes.Remove(updateTaskExecutes.Length - 1, 1) +
-                                    ") and a.\"TaskId\" = " + newTaskId +
-                                    " and b.\"DepartmentId\" = " + model.DepartmentId + " and " +
-                                    "EXISTS(select 1 from \"TaskExecutes\" b " +
-                                    "inner join \"Tasks\" b1 on b.\"TaskId\" = b1.\"Id\" " +
-                                    "where b1.\"Id\" = " + @newTaskId  + ")";
+                                    transaction.Execute("insert into \"TaskExecutes\" (\"TaskId\", \"UserId\"," +
+                                                        "\"CreateUser\") Values (@TaskId, @UserId, @CreateUser) " +
+                                                        "ON CONFLICT (\"TaskId\", \"UserId\") DO NOTHING",
+                                        new
+                                        {
+                                            TaskId = newTaskId,
+                                            UserId = userId,
+                                            StatusId = Config.Waiting,
+                                            CreateUser = model.UpdateUser ///---
+                                        });
 
-                                transaction.Execute(updateTaskExecutes);
-                            }
-                        }
+                                    updateTaskExecutes += userId + ",";
+                                }
 
-                        // add departments
-                        var newDepartments = multiDepartments.ToList();
-                        if (newDepartments.Any())
-                        {
-                            foreach (var newDepartmentId in newDepartments.Select(Helper.ConvertToInt))
-                            {
-                                // insert new department to Task if not exist
-                                transaction.Execute("insert into \"Tasks\" (\"DepartmentId\", \"IssueId\", \"StatusId\", \"CreateUser\") " +
-                                                    "Values (@DepartmentId,  @IssueId, @StatusId, @CreateUser) " +
-                                                    "ON CONFLICT (\"IssueId\", \"DepartmentId\") DO NOTHING",
+                                // set status TaskExecute is Cancel user not in list
+
+                                // update TaskExecutes of Task with current User
+                                if (model.StatusId == Config.Cancel || model.StatusId == Config.Complete)
+                                {
+                                    transaction.Execute("Update \"TaskExecutes\" a set \"StatusId\" = @StatusId " +
+                                        "from \"Users\" b where a.\"UserId\" = b.\"UserId\" " +
+                                        "and a.\"TaskId\" = @TaskId and b.\"DepartmentId\" = @DepartmentId and " +
+                                        "EXISTS(select 1 from \"TaskExecutes\" b " +
+                                        "inner join \"Tasks\" b1 on b.\"TaskId\" = b1.\"Id\" " +
+                                        "where b1.\"Id\" = @TaskId)",
                                     new
                                     {
-                                        DepartmentId = newDepartmentId,
-                                        IssueId = model.IssueId,
-                                        StatusId = Config.Waiting,
-                                        CreateUser = model.UpdateUser
+                                        StatusId = model.StatusId,
+                                        TaskId = newTaskId,
+                                        DepartmentId = model.DepartmentId
                                     });
+                                }
+                                else
+                                {
+                                    updateTaskExecutes = updateTaskExecutes.Remove(updateTaskExecutes.Length - 1, 1) +
+                                        ") and a.\"TaskId\" = " + newTaskId +
+                                        " and b.\"DepartmentId\" = " + model.DepartmentId + " and " +
+                                        "EXISTS(select 1 from \"TaskExecutes\" b " +
+                                        "inner join \"Tasks\" b1 on b.\"TaskId\" = b1.\"Id\" " +
+                                        "where b1.\"Id\" = " + @newTaskId + ")";
+
+                                    transaction.Execute(updateTaskExecutes);
+                                }
                             }
+
+                            // add departments
+                            var newDepartments = multiDepartments.ToList();
+                            if (newDepartments.Any())
+                            {
+                                foreach (var newDepartmentId in newDepartments.Select(Helper.ConvertToInt))
+                                {
+                                    // insert new department to Task if not exist
+                                    transaction.Execute("insert into \"Tasks\" (\"DepartmentId\", \"IssueId\", \"StatusId\", \"CreateUser\") " +
+                                                        "Values (@DepartmentId,  @IssueId, @StatusId, @CreateUser) " +
+                                                        "ON CONFLICT (\"IssueId\", \"DepartmentId\") DO NOTHING",
+                                        new
+                                        {
+                                            DepartmentId = newDepartmentId,
+                                            IssueId = model.IssueId,
+                                            StatusId = Config.Waiting,
+                                            CreateUser = model.UpdateUser
+                                        });
+                                }
+                            }
+
+                            // update status of Issue
+                            //transaction.Execute("call \"UpdateIssueStatus\"(" + model.IssueId + ")");
+
+                            transaction.Execute("UPDATE \"Issues\" SET \"StatusId\" = (select case when not exists " +
+                                "(SELECT 1 FROM \"Tasks\" a WHERE a.\"IssueId\" = @IssueId and " +
+                                "a.\"StatusId\" != 3 ) then " + Config.Cancel + " when not exists " +
+                                "(SELECT 1 FROM \"Tasks\" a1 WHERE a1.\"IssueId\" = @IssueId " +
+                                "and a1.\"StatusId\" not in (3,5)) then " + Config.Complete +
+                                " when \"StatusId\" = 6 then 1  ELSE \"StatusId\" end) where \"Id\" = @IssueId",
+                                new { IssueId = model.IssueId });
+
                         }
-
-                        // update status of Issue
-                        //transaction.Execute("call \"UpdateIssueStatus\"(" + model.IssueId + ")");
-
-                        transaction.Execute("UPDATE \"Issues\" SET \"StatusId\" = (select case when not exists " +
-                            "(SELECT 1 FROM \"Tasks\" a WHERE a.\"IssueId\" = @IssueId and " +
-                            "a.\"StatusId\" != 3 ) then " + Config.Cancel + " when not exists " +
-                            "(SELECT 1 FROM \"Tasks\" a1 WHERE a1.\"IssueId\" = @IssueId " +
-                            "and a1.\"StatusId\" not in (3,5)) then " + Config.Complete +
-                            " when \"StatusId\" = 6 then 1  ELSE \"StatusId\" end) where \"Id\" = @IssueId",
-                            new { IssueId = model.IssueId });
 
                         transaction.Commit();
                     }

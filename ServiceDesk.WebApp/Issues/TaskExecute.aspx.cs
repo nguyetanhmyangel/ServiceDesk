@@ -98,6 +98,13 @@ namespace ServiceDesk.WebApp.Issues
                             //Helper.TextLimit("lbRequestDescription", 20, e);
                             Helper.TextLimit("lbCustomerEmployeeName", 18, e);
 
+                            var priorityId = Helper.ConvertToInt(((HiddenField)dataItem.FindControl("hdPriorityId")).Value);
+                            if (priorityId > 1)
+                            {
+                                var img = (Image)dataItem.FindControl("imgFlag");
+                                img.ImageUrl = "~/Images/RedFlag.PNG";
+                            }
+
                             // set css for status
                             var label = (Label)dataItem.FindControl("lbStatus");
                             switch (Helper.ConvertToInt(dataItem["StatusId"].Text))
