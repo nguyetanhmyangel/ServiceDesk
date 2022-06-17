@@ -373,7 +373,7 @@ namespace ServiceDesk.Utilities
             else if (role == 2)
                 response.Redirect("~/Issues/TaskExecute.aspx");
             else if (role == 8 || role == 16)
-                response.Redirect("~/Issues/Task.aspx");
+                response.Redirect("~/Issues/DepartmentTask.aspx");
             else if (role == -1 || role == 32)
                 response.Redirect("~/Issues/Task.aspx");                  
             else

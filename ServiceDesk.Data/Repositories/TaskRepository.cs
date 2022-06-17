@@ -135,14 +135,13 @@ namespace ServiceDesk.Data.Repositories
                             }
                         }
 
-                        // Update Tasks with current department and current Issue have status is Cancel
                         if (model.StatusId == Config.Complete || model.StatusId == Config.Cancel)
                         {
                             transaction.Execute("Update \"Issues\" set \"StatusId\" = @StatusId " +
                             "where \"Id\" = @IssueId",
                             new
                             {
-                                StatusId = statusId,
+                                StatusId = model.StatusId,
                                 IssueId = model.IssueId
                             });
 
@@ -150,7 +149,7 @@ namespace ServiceDesk.Data.Repositories
                             "where \"IssueId\" = @IssueId EXISTS(select 1 from \"Tasks\" where \"IssueId\" = @IssueId)",
                             new
                             {
-                                StatusId = statusId,
+                                StatusId = model.StatusId,
                                 IssueId = model.IssueId
                             });
 
@@ -161,7 +160,7 @@ namespace ServiceDesk.Data.Repositories
                                 "inner join \"Tasks\" b1 on b.\"TaskId\" = b1.\"Id\" " +
                                 "inner join \"Issues\" b2 on b2.\"Id\" = b1.\"IssueId\"  where b2.\"Id\" = @IssueId)", new
                                 {
-                                    StatusId = statusId,
+                                    StatusId = model.StatusId,
                                     IssueId = model.IssueId
                                 });
 
@@ -191,11 +190,6 @@ namespace ServiceDesk.Data.Repositories
             }
         }
 
-        private bool CheckExist()
-        {
-
-            return false;
-        }
 
         public bool Update(TaskCommand model, IEnumerable<object> multiDepartments, IEnumerable<object> multiUsers)
         {
@@ -207,17 +201,8 @@ namespace ServiceDesk.Data.Repositories
                 {
                     try
                     {
-                        //var currentStatusId = 0;
-                        //if (model.StatusId == Config.Cancel || model.StatusId == Config.Complete)
-                        //    currentStatusId = 
-
-                        //var exist = transaction.QueryFirstOrDefault<bool>("select case when exists (SELECT 1 FROM \"Tasks\" a " +
-                        //    "WHERE a.\"IssueId\" = @IssueId and a.\"DepartmentId\" = @DepartmentId  " +
-                        //    "then CAST('1' as bool) else CAST('0' as bool) end", 
-                        //    new { IssueId = model.IssueId, DepartmentId = model.DepartmentId });
-
                         var newTaskId = model.TaskId;
-
+                        var statusId = model.StatusId == Config.Waiting ? Config.Processing : model.StatusId;
                         if (model.TaskId > 0)
                         {
                             transaction.Execute("Update \"Tasks\" set \"StartDate\" = @StartDate, " +
@@ -228,7 +213,7 @@ namespace ServiceDesk.Data.Repositories
                             {
                                 StartDate = model.StartDate,
                                 EndDate = model.EndDate,
-                                StatusId = model.StatusId,
+                                StatusId = statusId,
                                 PriorityId = model.PriorityId,
                                 PrivateDescription = model.PrivateDescription,
                                 UpdateUser = model.UpdateUser,
@@ -245,7 +230,7 @@ namespace ServiceDesk.Data.Repositories
                                     {
                                         DepartmentId = model.DepartmentId,
                                         IssueId = model.IssueId,
-                                        StatusId = Config.Processing,
+                                        StatusId = Config.Waiting,
                                         PriorityId = model.PriorityId,
                                         Description = model.Description,
                                         CreateUser = model.UpdateUser
