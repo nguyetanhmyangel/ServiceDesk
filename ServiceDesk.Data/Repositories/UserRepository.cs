@@ -244,9 +244,11 @@ namespace ServiceDesk.Data.Repositories
                     "from \"Users\" a " +
                     "left join (select b.\"UserId\", count(b.\"Id\") as \"CountExecuting\" from \"TaskExecutes\" b " +
                     "inner join \"Tasks\" b1 on b.\"TaskId\" = b1.\"Id\" " +
-                    "where  b.\"Progress\" < 100 and b.\"StatusId\" = @StatusId " +
+                    "where b.\"Progress\" < " + Config.CompleteProgress +
+                    " and b.\"StatusId\" in (" + Config.Processing + "," + Config.Waiting + ") and" +
+                    "b1.\"StatusId\" not in (" + Config.Cancel + "," + Config.Complete + ") " +
                     "group by b.\"UserId\") a2 on  a2.\"UserId\" = a.\"UserId\" " +
-                    "where a.\"DepartmentId\" = @DepartmentId  order by a.\"UserId\"", new { DepartmentId = departmentId, StatusId = Config.Processing });
+                    "where a.\"DepartmentId\" = @DepartmentId  order by a.\"UserId\"", new { DepartmentId = departmentId });
             }
         }
 

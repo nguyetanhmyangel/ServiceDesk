@@ -43,13 +43,17 @@ namespace ServiceDesk.Data.Repositories
                 {
                     try
                     {
+                        //var statusId = model.StatusId == Config.Waiting ? Config.Processing : model.StatusId;
+                        var statusId = model.Progress == Config.CompleteProgress ? Config.Complete : Config.Processing;
                         dbConnection.Execute("Update \"TaskExecutes\" set \"Progress\" = @Progress, " +
-                                             "\"FinishDate\" = @FinishDate,\"Description\" = @Description where \"Id\" = @Id",
+                                             "\"FinishDate\" = @FinishDate, \"Description\" = @Description, " +
+                                             "\"StatusId\" = @StatusId where \"Id\" = @Id",
                             new
                             {
                                 FinishDate = model.FinishDate,
                                 Progress = model.Progress,
                                 Description = model.Description,
+                                StatusId = statusId,    
                                 Id = model.Id
                             }, transaction: transaction);
 

@@ -52,6 +52,7 @@ namespace ServiceDesk.Utilities
         public const int NetworkDepartment = 272;
         public const int RepairDepartment = 275;
         public const int InfoTechDivision = 10;// 
+        public const int CompleteProgress = 100;
 
         /*
          *

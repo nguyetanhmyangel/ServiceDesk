@@ -77,7 +77,9 @@ namespace ServiceDesk.Data.Repositories
                       "inner join \"DepartmentViews\" a2 on a.\"DepartmentId\" = a2.\"DepartmentId\" " +
                       "left join (select b.\"UserId\", count(b.\"Id\") as \"NumExecute\" from \"TaskExecutes\" b " +
                       "inner join \"Tasks\" b1 on b.\"TaskId\" = b1.\"Id\" " +
-                      "where  b.\"Progress\" < 100 and b.\"StatusId\" = 6 " +
+                      "where b.\"Progress\" < " + Config.CompleteProgress + 
+                      " and b.\"StatusId\" in (" + Config.Processing + "," + Config.Waiting + ") and" +
+                      "b1.\"StatusId\" not in (" + Config.Cancel + "," + Config.Complete + ") " +
                       "group by \"UserId\") a3 on  a3.\"UserId\" = a1.\"UserId\" " +
                       "where (a.\"DepartmentId\" = @DepartmentId or @DepartmentId = - 1) and a.\"Quit\" = 'f'"
 
@@ -87,7 +89,9 @@ namespace ServiceDesk.Data.Repositories
                       "inner join \"DepartmentViews\" a2 on a.\"DepartmentId\" = a2.\"DepartmentId\" " +
                       "left join (select b.\"UserId\", count(b.\"Id\") as \"NumExecute\" from \"TaskExecutes\" b " +
                       "inner join \"Tasks\" b1 on b.\"TaskId\" = b.\"Id\" " +
-                      "where  b.\"Progress\" < 100 and b1.\"StatusId\" = 6 " +
+                      "where b.\"Progress\" < " + Config.CompleteProgress +
+                      " and b.\"StatusId\" in (" + Config.Processing + "," + Config.Waiting + ") and" +
+                      "b1.\"StatusId\" not in (" + Config.Cancel + "," + Config.Complete + ") " +
                       "group by \"UserId\") a3 on  a3.\"UserId\" = a1.\"UserId\" " +
                       "where a.\"DepartmentId\" = @DepartmentId and a.\"Quit\" = 'f'";
 
